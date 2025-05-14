@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
             },
             {
                 title: 'El-Mismo-Sol',
-                src: 'music/El-Mismo-Sol.mp3'
+                src: 'music/elmismosol.mp3'
             },
             {
                 title: '小美满',
