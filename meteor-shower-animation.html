@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>蓝白色流星雨</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+            height: 100vh;
+            width: 100vw;
+        }
+        
+        .night {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform: rotateZ(45deg);
+            overflow: hidden;
+        }
+        
+        .shooting_star {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            height: 2px;
+            /* 统一流星颜色为蓝白光 */
+            background: linear-gradient(-45deg, rgba(210, 235, 255, 1), rgba(210, 235, 255, 0));
+            border-radius: 999px;
+            filter: drop-shadow(0 0 6px rgba(120, 180, 255, 1));
+            animation: tail 4000ms ease-in-out infinite, shooting 4000ms ease-in-out infinite;
+        }
+
+        .shooting_star::before {
+            content: '';
+            position: absolute;
+            top: calc(50% - 1px);
+            right: 0;
+            height: 2px;
+            /* 保持蓝白色调 */
+            background: linear-gradient(-45deg, rgba(210, 235, 255, 0), rgba(210, 235, 255, 1), rgba(210, 235, 255, 0));
+            transform: translateX(50%) rotateZ(45deg);
+            border-radius: 100%;
+            animation: shining 4000ms ease-in-out infinite;
+        }
+        
+        .shooting_star::after {
+            content: '';
+            position: absolute;
+            top: calc(50% - 1px);
+            right: 0;
+            height: 2px;
+            /* 保持蓝白色调 */
+            background: linear-gradient(-45deg, rgba(210, 235, 255, 0), rgba(210, 235, 255, 1), rgba(210, 235, 255, 0));
+            transform: translateX(50%) rotateZ(45deg);
+            border-radius: 100%;
+            animation: shining 4000ms ease-in-out infinite;
+            transform: translateX(50%) rotateZ(-45deg);
+        }
+        
+        /* 亮一些的流星 */
+        .shooting_star.bright {
+            background: linear-gradient(-45deg, rgba(230, 245, 255, 1), rgba(230, 245, 255, 0));
+            filter: drop-shadow(0 0 10px rgba(150, 195, 255, 1));
+        }
+        
+        @keyframes tail {
+            0% {
+                width: 0;
+            }
+            
+            30% {
+                width: 100px;
+            }
+            
+            100% {
+                width: 0;
+            }
+        }
+        
+        @keyframes shining {
+            0% {
+                width: 0;
+            }
+            
+            50% {
+                width: 30px;
+            }
+            
+            100% {
+                width: 0;
+            }
+        }
+        
+        @keyframes shooting {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(300vw);
+            }
+        }
+        
+        /* 星星的基本样式 */
+        .star {
+            position: absolute;
+            border-radius: 50%;
+        }
+        
+        /* 不同类型的星星 */
+        .star-type1 {
+            background: white;
+            box-shadow: 0 0 2px white;
+        }
+        
+        .star-type2 {
+            background: #CFCFEA;
+            box-shadow: 0 0 3px #CFCFEA;
+        }
+        
+        .star-type3 {
+            background: #E2DED3;
+            box-shadow: 0 0 4px #E2DED3;
+        }
+        
+        /* 大型亮星 */
+        .bright-star {
+            background: white;
+            box-shadow: 0 0 8px white, 0 0 20px rgba(255, 255, 255, 0.5);
+            animation: pulsate 4s ease-in-out infinite;
+        }
+        
+        /* 极亮星星（模拟行星） */
+        .planet {
+            width: 3px !important;
+            height: 3px !important;
+        }
+        
+        .planet-1 {
+            background: #FFD580; /* 淡橙色 - 木星风格 */
+            box-shadow: 0 0 10px #FFD580, 0 0 15px rgba(255, 213, 128, 0.5);
+        }
+        
+        .planet-2 {
+            background: #D5DEF5; /* 淡蓝色 - 天王星风格 */
+            box-shadow: 0 0 8px #D5DEF5, 0 0 15px rgba(213, 222, 245, 0.6);
+        }
+        
+        /* 星云区域 - 添加一些浅色背景光晕 */
+        .nebula {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(ellipse at center, rgba(75, 50, 130, 0.15) 0%, rgba(75, 50, 130, 0) 70%);
+            animation: nebula-glow 10s ease-in-out infinite;
+        }
+        
+        /* 星团 - 集中的小星星区域 */
+        .star-cluster {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            opacity: 0.7;
+        }
+        
+        /* 脉动动画 */
+        @keyframes pulsate {
+            0%, 100% {
+                opacity: 0.8;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.1);
+            }
+        }
+        
+        /* 星云动画 */
+        @keyframes nebula-glow {
+            0%, 100% {
+                opacity: 0.3;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+        
+        /* 闪烁动画组 */
+        @keyframes twinkle-1 {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.8; }
+        }
+        
+        @keyframes twinkle-2 {
+            0%, 100% { opacity: 0.2; }
+            30% { opacity: 0.9; }
+            70% { opacity: 0.6; }
+        }
+        
+        @keyframes twinkle-3 {
+            0%, 100% { opacity: 0.4; }
+            25% { opacity: 0.6; }
+            75% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="night"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const nightSky = document.querySelector('.night');
+            
+            // 创建星云区域
+            function createNebulae() {
+                // 添加2-3个星云区域
+                const nebulaCount = Math.floor(Math.random() * 2) + 2;
+                
+                for (let i = 0; i < nebulaCount; i++) {
+                    const nebula = document.createElement('div');
+                    nebula.className = 'nebula';
+                    
+                    // 随机大小和位置
+                    const size = Math.random() * 300 + 200;
+                    nebula.style.width = size + 'px';
+                    nebula.style.height = size + 'px';
+                    nebula.style.left = (Math.random() * 100) + '%';
+                    nebula.style.top = (Math.random() * 100) + '%';
+                    
+                    // 随机颜色
+                    const colors = [
+                        'rgba(75, 50, 130, 0.15)', // 紫色
+                        'rgba(50, 80, 130, 0.12)', // 蓝色
+                        'rgba(130, 50, 90, 0.1)'  // 红色
+                    ];
+                    const color = colors[Math.floor(Math.random() * colors.length)];
+                    nebula.style.background = `radial-gradient(ellipse at center, ${color} 0%, rgba(0, 0, 0, 0) 70%)`;
+                    
+                    nightSky.appendChild(nebula);
+                    
+                    // 在星云区域创建密集的星星
+                    createStarCluster(nebula.offsetLeft + size/2, nebula.offsetTop + size/2, size/2);
+                }
+            }
+            
+            // 创建星团
+            function createStarCluster(x, y, radius) {
+                const clusterDiv = document.createElement('div');
+                clusterDiv.className = 'star-cluster';
+                clusterDiv.style.left = (x - 60) + 'px';
+                clusterDiv.style.top = (y - 60) + 'px';
+                
+                // 创建30-50个密集的小星星
+                const starCount = Math.floor(Math.random() * 20) + 30;
+                
+                for (let i = 0; i < starCount; i++) {
+                    const star = document.createElement('div');
+                    star.className = 'star star-type' + (Math.floor(Math.random() * 3) + 1);
+                    
+                    // 随机大小 - 星团中的星星较小
+                    const size = Math.random() * 1;
+                    star.style.width = size + 'px';
+                    star.style.height = size + 'px';
+                    
+                    // 在圆形区域内随机分布
+                    const angle = Math.random() * Math.PI * 2;
+                    const distance = Math.random() * radius * 0.7;
+                    star.style.left = (60 + Math.cos(angle) * distance) + 'px';
+                    star.style.top = (60 + Math.sin(angle) * distance) + 'px';
+                    
+                    // 随机闪烁
+                    const twinkleType = Math.floor(Math.random() * 3) + 1;
+                    star.style.animation = `twinkle-${twinkleType} ${Math.random() * 3 + 2}s ease-in-out infinite ${Math.random() * 2}s`;
+                    
+                    clusterDiv.appendChild(star);
+                }
+                
+                nightSky.appendChild(clusterDiv);
+            }
+            
+            // 创建背景星星
+            function createStars() {
+                // 先创建星云和星团
+                createNebulae();
+                
+                // 创建单个星星
+                const starCount = 350; // 增加星星数量
+                
+                for (let i = 0; i < starCount; i++) {
+                    const star = document.createElement('div');
+                    
+                    // 确定星星类型
+                    const starType = Math.random();
+                    
+                    if (starType < 0.005) {
+                        // 0.5% 的几率是"行星" - 极亮且有颜色
+                        star.className = 'star planet ' + (Math.random() < 0.5 ? 'planet-1' : 'planet-2');
+                        star.style.width = '3px';
+                        star.style.height = '3px';
+                    } else if (starType < 0.03) {
+                        // 2.5% 的几率是亮星
+                        star.className = 'star bright-star';
+                        star.style.width = (Math.random() * 1 + 2) + 'px';
+                        star.style.height = star.style.width;
+                    } else {
+                        // 97% 是普通星星
+                        const typeNum = Math.floor(Math.random() * 3) + 1;
+                        star.className = 'star star-type' + typeNum;
+                        
+                        // 随机大小
+                        const size = Math.random() * 1.5 + 0.5;
+                        star.style.width = size + 'px';
+                        star.style.height = size + 'px';
+                    }
+                    
+                    // 随机位置
+                    star.style.left = Math.random() * 100 + '%';
+                    star.style.top = Math.random() * 100 + '%';
+                    
+                    // 随机亮度
+                    star.style.opacity = Math.random() * 0.5 + 0.3;
+                    
+                    // 添加闪烁动画 - 不同类型
+                    const twinkleType = Math.floor(Math.random() * 3) + 1;
+                    star.style.animation = `twinkle-${twinkleType} ${Math.random() * 5 + 3}s ease-in-out infinite ${Math.random() * 5}s`;
+                    
+                    nightSky.appendChild(star);
+                }
+            }
+            
+            // 创建一颗流星
+            function createShootingStar() {
+                const shootingStar = document.createElement('div');
+                shootingStar.className = 'shooting_star';
+                
+                // 随机起始位置
+                const leftPos = Math.random() * 100 - 100; // 从屏幕左侧外开始
+                const topPos = Math.random() * 100; // 随机垂直位置
+                
+                shootingStar.style.left = leftPos + '%';
+                shootingStar.style.top = topPos + '%';
+                
+                // 调整动画持续时间 - 3-5秒
+                const duration = Math.random() * 2000 + 3000; // 3-5秒
+                shootingStar.style.animationDuration = `${duration}ms, ${duration}ms`;
+                
+                // 随机延迟
+                const delay = Math.random() * 1000;
+                shootingStar.style.animationDelay = `${delay}ms, ${delay}ms`;
+                
+                // 随机亮度
+                if (Math.random() > 0.7) {
+                    shootingStar.style.height = '3px';
+                    if (Math.random() > 0.5) {
+                        // 添加亮度类
+                        shootingStar.classList.add('bright');
+                    }
+                }
+                
+                nightSky.appendChild(shootingStar);
+                
+                // 流星飞过后移除
+                setTimeout(() => {
+                    shootingStar.remove();
+                }, duration + delay + 100);
+            }
+            
+            // 持续创建流星
+            function meteorShower() {
+                // 随机决定是单个流星还是流星群
+                if (Math.random() > 0.7) {
+                    // 流星群
+                    const count = Math.floor(Math.random() * 4) + 2; // 2-5颗流星
+                    
+                    for (let i = 0; i < count; i++) {
+                        setTimeout(() => {
+                            createShootingStar();
+                        }, i * Math.random() * 400); // 约400毫秒间隔
+                    }
+                } else {
+                    // 单个流星
+                    createShootingStar();
+                }
+                
+                // 2-3.5秒间隔
+                const nextTime = Math.random() * 1500 + 2000; // 2-3.5秒
+                setTimeout(meteorShower, nextTime);
+            }
+            
+            // 添加点击效果
+            document.body.addEventListener('click', function(e) {
+                // 计算相对于night容器的位置
+                const rect = nightSky.getBoundingClientRect();
+                const x = ((e.clientX - rect.left) / rect.width) * 100;
+                const y = ((e.clientY - rect.top) / rect.height) * 100;
+                
+                const shootingStar = document.createElement('div');
+                shootingStar.className = 'shooting_star';
+                
+                shootingStar.style.left = x + '%';
+                shootingStar.style.top = y + '%';
+                
+                const duration = 3000; // 3秒
+                shootingStar.style.animationDuration = `${duration}ms, ${duration}ms`;
+                shootingStar.style.animationDelay = '0ms, 0ms';
+                
+                nightSky.appendChild(shootingStar);
+                
+                setTimeout(() => {
+                    shootingStar.remove();
+                }, duration + 100);
+            });
+            
+            // 初始化
+            createStars();
+            meteorShower();
+            
+            // 窗口大小改变时重置
+            window.addEventListener('resize', function() {
+                // 清除所有元素
+                nightSky.innerHTML = '';
+                
+                // 重新创建星空
+                createStars();
+            });
+        });
+    </script>
+</body>
+</html>

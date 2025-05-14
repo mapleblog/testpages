@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>蓝色梦幻海洋特效</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #003366;
+            font-family: Arial, sans-serif;
+        }
+        
+        #ocean {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, #003366 0%, #005588 80%, #0077AA 100%);
+        }
+        
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle at 70% 30%, white, #7dd3fc 40%, #0ea5e9 60%, transparent);
+            animation: floatUp 4s ease-in infinite;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100%) scale(0.3);
+                opacity: 1;
+            }
+            95% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(-1000%) scale(0.3);
+                opacity: 0;
+            }
+        }
+        
+        h1 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 3rem;
+            text-shadow: 0 0 10px rgba(0, 150, 255, 0.8);
+            z-index: 10;
+            text-align: center;
+            opacity: 0;
+        }
+        
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+    <div id="ocean"></div>
+    <h1>蓝色梦幻海洋</h1>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    
+    <script>
+        // 初始化particles.js
+        particlesJS("particles-js", {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: "#ffffff" },
+                shape: { type: "circle" },
+                opacity: { value: 0.5, random: true },
+                size: { value: 3, random: true },
+                move: {
+                    enable: true,
+                    speed: 1,
+                    direction: "none",
+                    random: true,
+                    straight: false,
+                    out_mode: "out"
+                }
+            }
+        });
+        
+        // 标题动画
+        gsap.to("h1", { opacity: 1, duration: 2, delay: 1, ease: "power2.inOut" });
+        
+        // 创建气泡
+        function createBubble() {
+            const bubble = document.createElement('div');
+            bubble.className = 'bubble';
+            
+            const size = Math.random() * 20 + 5;
+            const left = Math.random() * 100;
+            
+            bubble.style.width = `${size}px`;
+            bubble.style.height = `${size}px`;
+            bubble.style.left = `${left}%`;
+            bubble.style.bottom = '-50px';
+            
+            const duration = Math.random() * 3 + 2;
+            bubble.style.animationDuration = `${duration}s`;
+            
+            document.getElementById('ocean').appendChild(bubble);
+            
+            setTimeout(() => {
+                bubble.remove();
+            }, duration * 1000);
+        }
+        
+        // 定期创建气泡
+        setInterval(createBubble, 300);
+    </script>
+</body>
+</html>

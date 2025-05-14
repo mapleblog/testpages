@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Friendship</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Ocean background -->
+    <div id="particles-js"></div>
+    <div id="ocean"></div>
+    
+    <div class="container">
+        <header>
+            <h1>CAMARADERIE</h1>
+        </header>
+        
+        <div class="music-player">
+            <div class="music-info">
+                <div class="music-title">正在播放: <span id="song-title">海浪声</span></div>
+                <div class="music-controls">
+                    <button id="prev-btn" class="control-btn"><i class="fas fa-step-backward"></i></button>
+                    <button id="play-btn" class="control-btn"><i class="fas fa-play"></i></button>
+                    <button id="next-btn" class="control-btn"><i class="fas fa-step-forward"></i></button>
+                </div>
+            </div>
+            <div class="volume-control">
+                <i class="fas fa-volume-down"></i>
+                <input type="range" id="volume-slider" min="0" max="100" value="50">
+                <i class="fas fa-volume-up"></i>
+            </div>
+            <audio id="audio-player" preload="auto"></audio>
+        </div>
+        
+        <section class="friendship-section">
+            <div class="avatars">
+                <div class="avatar-container">
+                    <div class="avatar" id="avatar1">
+                        <img src="img/owl.png" alt="头像1" id="avatar1-img">
+                    </div>
+                    <div class="name-display">bb</div>
+                    <div class="profile-canvas">
+                        <div class="profile-content">
+                            <div class="profile-info">
+                                <div class="info-item">
+                                    <span class="info-icon"><i class="fas fa-birthday-cake"></i></span>
+                                    <span class="info-text">1995-08-15</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-icon"><i class="fas fa-globe-asia"></i></span>
+                                    <span class="info-text">中国</span>
+                                </div>
+                            </div>
+                            <div class="profile-interests">
+                                <h4>兴趣爱好</h4>
+                                <div class="profile-tags">
+                                    <span class="tag">旅行</span>
+                                    <span class="tag">摄影</span>
+                                    <span class="tag">美食</span>
+                                </div>
+                            </div>
+                            <div class="profile-motto">
+                                <p>"生活不止眼前的苏豆和试卷”</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="heart">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                </div>
+                
+                <div class="avatar-container">
+                    <div class="avatar" id="avatar2">
+                        <img src="img/profile2.png" alt="头像2" id="avatar2-img">
+                    </div>
+                    <div class="name-display">aa</div>
+                    <div class="profile-canvas">
+                        <div class="profile-content">
+                            <div class="profile-info">
+                                <div class="info-item">
+                                    <span class="info-icon"><i class="fas fa-birthday-cake"></i></span>
+                                    <span class="info-text">1996-03-22</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-icon"><i class="fas fa-globe-asia"></i></span>
+                                    <span class="info-text">越南</span>
+                                </div>
+                            </div>
+                            <div class="profile-interests">
+                                <h4>兴趣爱好</h4>
+                                <div class="profile-tags">
+                                    <span class="tag">音乐</span>
+                                    <span class="tag">阅读</span>
+                                    <span class="tag">电影</span>
+                                </div>
+                            </div>
+                            <div class="profile-motto">
+                                <p>"人生就像弦一样，不绕紧就弹不出美妙的音乐”</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="save-button-container">
+            </div>
+        </section>
+        
+        <section class="counter-section">
+            <div class="days-label">Days of Friendship</div>
+            <div class="counter-container">
+                <div class="counter">
+                    <span id="days">0</span>
+                    <span class="label">Days</span>
+                </div>
+                <div class="counter">
+                    <span id="hours">0</span>
+                    <span class="label">Hours</span>
+                </div>
+                <div class="counter">
+                    <span id="minutes">0</span>
+                    <span class="label">Minutes</span>
+                </div>
+                <div class="counter">
+                    <span id="seconds">0</span>
+                    <span class="label">Seconds</span>
+                </div>
+            </div>
+        </section>
+        
+        <footer class="footer">
+            <p id="saved-message"></p>
+            <p>Friendship is a single soul dwelling in two bodies. <i class="fas fa-heart"></i></p>
+        </footer>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script src="js/script.js?v=1.0.2"></script>
+    <script src="js/ocean.js"></script>
+</body>
+</html>
