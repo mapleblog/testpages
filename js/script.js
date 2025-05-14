@@ -121,6 +121,20 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // 切换歌曲
         function changeSong(index) {
+            console.log('尝试加载歌曲:', playlist[index].title, '路径:', playlist[index].src);
+            
+            // 创建一个测试请求来检查文件是否存在
+            fetch(playlist[index].src)
+                .then(response => {
+                    if (!response.ok) {
+                        console.error('文件不存在或无法访问:', playlist[index].src);
+                        alert('文件不存在或无法访问: ' + playlist[index].src);
+                    }
+                })
+                .catch(error => {
+                    console.error('检查文件时出错:', error);
+                });
+            
             audioPlayer.src = playlist[index].src;
             songTitle.textContent = playlist[index].title;
             
