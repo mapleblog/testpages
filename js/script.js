@@ -33,6 +33,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 src: 'music/bgm.mp4'
             }
             // 可以根据需要添加更多音乐
+            {
+                title: 'El-Mismo-Sol',
+                src: 'music/El-Mismo-Sol.mp3'
+            }
         ];
         
         let currentTrack = 0;
