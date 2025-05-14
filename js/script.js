@@ -35,6 +35,10 @@ document.addEventListener('DOMContentLoaded', function() {
             {
                 title: 'El-Mismo-Sol',
                 src: 'music/El-Mismo-Sol.mp3'
+            },
+            {
+                title: '小美满',
+                src: 'music/小美满.mp3'
             }
             // 可以根据需要添加更多音乐
             
