@@ -30,15 +30,15 @@ document.addEventListener('DOMContentLoaded', function() {
         const playlist = [
             {
                 title: '赤壁Online - 登入畫面',
-                src: 'music/bgm.mp4'
+                src: '/testpages/music/bgm.mp4'
             },
             {
                 title: 'El-Mismo-Sol',
-                src: 'music/elmismosol.mp3'
+                src: '/testpages/music/elmismosol.mp3'
             },
             {
                 title: '小美满',
-                src: 'music/小美满.mp3'
+                src: '/testpages/music/小美满.mp3'
             }
             // 可以根据需要添加更多音乐
             
