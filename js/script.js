@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const playlist = [
             {
                 title: 'El Mismo Sol',
-                src: 'music/El Mismo Sol.mp3'
+                src: 'music/El-Mismo-Sol.mp3'
             },
             {
                 title: '轻松音乐',
