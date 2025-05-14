@@ -29,8 +29,8 @@ document.addEventListener('DOMContentLoaded', function() {
         // 音乐列表
         const playlist = [
             {
-                title: '海浪声',
-                src: 'music/ocean-waves.mp3'
+                title: 'El Mismo Sol',
+                src: 'music/El Mismo Sol.mp3'
             },
             {
                 title: '轻松音乐',
