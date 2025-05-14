@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
             {
                 title: '赤壁Online - 登入畫面',
                 src: 'music/bgm.mp4'
-            }
+            },
             // 可以根据需要添加更多音乐
             {
                 title: 'El-Mismo-Sol',
