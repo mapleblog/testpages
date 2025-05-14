@@ -29,16 +29,8 @@ document.addEventListener('DOMContentLoaded', function() {
         // 音乐列表
         const playlist = [
             {
-                title: 'El Mismo Sol',
-                src: 'music/El-Mismo-Sol.mp3'
-            },
-            {
-                title: '轻松音乐',
-                src: 'music/relaxing-music.mp3'
-            },
-            {
-                title: '海滩日落',
-                src: 'music/sunset-vibes.mp3'
+                title: '赤壁Online - 登入畫面',
+                src: 'music/bgm.mp4'
             }
             // 可以根据需要添加更多音乐
         ];
@@ -47,8 +39,26 @@ document.addEventListener('DOMContentLoaded', function() {
         let isPlaying = false;
         
         // 设置初始音乐
-        audioPlayer.src = playlist[currentTrack].src;
-        songTitle.textContent = playlist[currentTrack].title;
+        try {
+            console.log('加载音乐:', playlist[currentTrack]);
+            audioPlayer.src = playlist[currentTrack].src;
+            songTitle.textContent = playlist[currentTrack].title;
+            
+            // 添加错误处理
+            audioPlayer.addEventListener('error', function(e) {
+                console.error('音频加载错误:', e);
+                console.error('错误代码:', audioPlayer.error.code);
+                console.error('错误信息:', audioPlayer.error.message);
+                alert('音频加载失败\n请检查文件路径和格式\n错误代码: ' + audioPlayer.error.code);
+            });
+            
+            // 添加调试信息
+            audioPlayer.addEventListener('canplay', function() {
+                console.log('音频已准备好可以播放');
+            });
+        } catch (err) {
+            console.error('设置音乐源时出错:', err);
+        }
         
         // 播放/暂停按钮
         playBtn.addEventListener('click', function() {
@@ -56,8 +66,23 @@ document.addEventListener('DOMContentLoaded', function() {
                 audioPlayer.pause();
                 playBtn.innerHTML = '<i class="fas fa-play"></i>';
             } else {
-                audioPlayer.play();
-                playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                // 尝试播放并捕获错误
+                const playPromise = audioPlayer.play();
+                
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        // 播放成功
+                        console.log('音乐开始播放');
+                        playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                        isPlaying = true;
+                    }).catch(error => {
+                        // 播放失败
+                        console.error('播放失败:', error);
+                        alert('播放失败: ' + error.message);
+                        playBtn.innerHTML = '<i class="fas fa-play"></i>';
+                        isPlaying = false;
+                    });
+                }
             }
             isPlaying = !isPlaying;
         });
