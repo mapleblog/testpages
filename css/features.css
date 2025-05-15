@@ -1,0 +1,560 @@
+/* 功能区域样式 */
+.features-section {
+    margin-top: 40px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 16px;
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.features-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 100%);
+    z-index: -1;
+}
+
+.features-tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 10px;
+}
+
+.feature-tab {
+    padding: 10px 20px;
+    margin: 0 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 600;
+    border: 1px solid transparent;
+}
+
+.feature-tab:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.feature-tab.active {
+    background: var(--primary-color);
+    color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.feature-content {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.feature-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 互动留言板样式 */
+.message-board {
+    margin-top: 20px;
+}
+
+.message-form {
+    margin-bottom: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 600;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.2);
+    color: white;
+    font-family: inherit;
+    resize: vertical;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(108, 92, 231, 0.3);
+}
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.emoji-container {
+    position: relative;
+}
+
+.emoji-button {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.emoji-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.emoji-picker {
+    display: none;
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    padding: 10px;
+    width: 200px;
+    z-index: 100;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.emoji-picker.active {
+    display: flex;
+}
+
+.emoji {
+    font-size: 1.5rem;
+    padding: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.emoji:hover {
+    transform: scale(1.2);
+}
+
+.submit-button {
+    background: linear-gradient(135deg, var(--primary-color), #8c7ae6);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.submit-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.message-list {
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+.message-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.message-list::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+}
+
+.message-list::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+}
+
+.message-list::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.message-item {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-left: 3px solid var(--primary-color);
+    transition: all 0.3s ease;
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.message-item:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.message-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 5px;
+}
+
+.message-name {
+    font-weight: 600;
+    color: var(--accent-color);
+}
+
+.message-time {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.message-content {
+    margin-bottom: 10px;
+    line-height: 1.5;
+    word-break: break-word;
+}
+
+.message-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.like-button, .delete-button {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    padding: 5px 10px;
+    margin-left: 10px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.like-button:hover {
+    color: #e84393;
+}
+
+.delete-button:hover {
+    color: #ff6b6b;
+}
+
+/* 心情日记样式 */
+.mood-diary {
+    margin-top: 20px;
+}
+
+.mood-form {
+    margin-bottom: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mood-icons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.mood-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.2);
+    color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 5px;
+    font-size: 1.5rem;
+}
+
+.mood-icon:hover {
+    transform: scale(1.1);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.mood-icon.selected {
+    background: var(--primary-color);
+    color: white;
+    box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.3);
+}
+
+.mood-list {
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+.mood-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.mood-list::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+}
+
+.mood-list::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+}
+
+.mood-list::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.mood-item {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-left: 3px solid var(--secondary-color);
+    transition: all 0.3s ease;
+    animation: slideIn 0.3s ease;
+}
+
+.mood-item:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.mood-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 5px;
+    align-items: center;
+}
+
+.mood-date {
+    font-weight: 600;
+    color: var(--secondary-color);
+}
+
+.mood-icon-display {
+    font-size: 1.2rem;
+}
+
+.mood-time {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.mood-content {
+    margin-bottom: 10px;
+    line-height: 1.5;
+    word-break: break-word;
+}
+
+.mood-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.delete-mood-button {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.delete-mood-button:hover {
+    color: #ff6b6b;
+}
+
+/* 愿望清单样式 */
+.wish-list-container {
+    margin-top: 20px;
+}
+
+.wish-form {
+    margin-bottom: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.form-row .form-group {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+.wish-list {
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+.wish-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.wish-list::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+}
+
+.wish-list::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+}
+
+.wish-list::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.wish-item {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-left: 3px solid #a29bfe;
+    transition: all 0.3s ease;
+    animation: slideIn 0.3s ease;
+}
+
+.wish-item:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.wish-item.completed {
+    border-left-color: #00b894;
+    background: rgba(0, 184, 148, 0.1);
+}
+
+.wish-item.completed .wish-content {
+    text-decoration: line-through;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.wish-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 5px;
+}
+
+.wish-category {
+    font-weight: 600;
+    color: #a29bfe;
+}
+
+.wish-item.completed .wish-category {
+    color: #00b894;
+}
+
+.wish-time {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.wish-content {
+    margin-bottom: 10px;
+    line-height: 1.5;
+    word-break: break-word;
+}
+
+.wish-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.complete-wish-button, .delete-wish-button {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    padding: 5px 10px;
+    margin-left: 10px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.complete-wish-button:hover {
+    color: #00b894;
+}
+
+.delete-wish-button:hover {
+    color: #ff6b6b;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .features-tabs {
+        flex-wrap: wrap;
+    }
+    
+    .feature-tab {
+        margin-bottom: 10px;
+    }
+    
+    .form-row {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .mood-icons {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .message-header, .mood-header, .wish-header {
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .message-actions, .mood-actions, .wish-actions {
+        margin-top: 10px;
+    }
+}
