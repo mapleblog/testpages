@@ -37,8 +37,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 src: '/testpages/music/elmismosol.mp3'
             },
             {
-                title: '小美满',
-                src: '/testpages/music/' + encodeURIComponent('小美满.mp3')
+                title: '去追风吧',
+                src: '/testpages/music/dream.mp3'
             }
             // 可以根据需要添加更多音乐
             
