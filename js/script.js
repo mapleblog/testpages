@@ -29,12 +29,8 @@ document.addEventListener('DOMContentLoaded', function() {
         // 音乐列表
         const playlist = [
             {
-                title: '赤壁Online - 登入畫面',
-                src: '/testpages/music/bgm.mp4'
-            },
-            {
-                title: 'El-Mismo-Sol',
-                src: '/testpages/music/elmismosol.mp3'
+                title: 'Pretty Boy',
+                src: '/testpages/music/PrettyBoy.mp3'
             },
             {
                 title: '去追风吧',
