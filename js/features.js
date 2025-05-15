@@ -1,19 +1,15 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-
 // 功能模块：互动留言板、心情日记和愿望清单
 document.addEventListener('DOMContentLoaded', function() {
     // Firebase 配置
     const firebaseConfig = {
         apiKey: "AIzaSyCxtfRwm3cGObl3D2lbAkwUeGR2LhGT3FQ",
-  	authDomain: "daycount-vietnam.firebaseapp.com",
-  	databaseURL: "https://daycount-vietnam-default-rtdb.asia-southeast1.firebasedatabase.app",
-  	projectId: "daycount-vietnam",
-  	storageBucket: "daycount-vietnam.firebasestorage.app",
-  	messagingSenderId: "335860361173",
-  	appId: "1:335860361173:web:931d891d00085d33083f5c",
-  	measurementId: "G-LVPPF0CX2C"
+    	authDomain: "daycount-vietnam.firebaseapp.com",
+    	databaseURL: "https://daycount-vietnam-default-rtdb.asia-southeast1.firebasedatabase.app",
+    	projectId: "daycount-vietnam",
+    	storageBucket: "daycount-vietnam.firebasestorage.app",
+    	messagingSenderId: "335860361173",
+    	appId: "1:335860361173:web:931d891d00085d33083f5c",
+    	measurementId: "G-LVPPF0CX2C"
     };
     
     // 初始化 Firebase
