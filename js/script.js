@@ -160,7 +160,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // 更新计数器
     function updateCounter() {
         // 使用固定开始日期
-        const startDate = new Date('2025-02-24');
+        const startDate = new Date('2025-05-05');
         const currentDate = new Date();
         
         // 计算已经过去的总秒数
