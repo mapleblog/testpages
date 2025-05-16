@@ -200,7 +200,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
             
-            moodList.prepend(moodElement);
+            // 添加到列表开头
+            messageList.insertBefore(moodElement, moodList.firstChild);
         }
         
         // 获取心情图标

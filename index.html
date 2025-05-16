@@ -133,49 +133,16 @@
             </div>
         </section>
         
-        <!-- 新增功能区域 -->
+        <!-- 功能区域 -->
         <section class="features-section">
             <div class="features-tabs">
-                <div class="feature-tab active" data-target="message-board-content">互动留言板</div>
-                <div class="feature-tab" data-target="mood-diary-content">心情日记</div>
+                <div class="feature-tab active" data-target="mood-diary-content">心情日记</div>
                 <div class="feature-tab" data-target="wish-list-content">愿望清单</div>
-            </div>
-            
-            <!-- 互动留言板 -->
-            <div id="message-board-content" class="feature-content active">
-                <div class="message-board">
-                    <form id="message-form" class="message-form">
-                        <div class="form-group">
-                            <label for="name-input">你的名字</label>
-                            <input type="text" id="name-input" class="form-control" placeholder="匿名">
-                        </div>
-                        <div class="form-group">
-                            <label for="message-input">留言内容</label>
-                            <textarea id="message-input" class="form-control" rows="3" placeholder="写下你想说的话..."></textarea>
-                        </div>
-                        <div class="form-actions">
-                            <div class="emoji-container">
-                                <button id="emoji-button" class="emoji-button"><i class="far fa-smile"></i> 表情</button>
-                                <div id="emoji-picker" class="emoji-picker">
-                                    <span class="emoji">😊</span>
-                                    <span class="emoji">😂</span>
-                                    <span class="emoji">❤️</span>
-                                    <span class="emoji">👍</span>
-                                    <span class="emoji">🎉</span>
-                                    <span class="emoji">🌸</span>
-                                    <span class="emoji">✨</span>
-                                    <span class="emoji">🥰</span>
-                                </div>
-                            </div>
-                            <button type="submit" class="submit-button">发送留言</button>
-                        </div>
-                    </form>
-                    <div id="message-list" class="message-list"></div>
-                </div>
+                <div class="feature-tab" data-target="message-board-content">留言板</div>
             </div>
             
             <!-- 心情日记 -->
-            <div id="mood-diary-content" class="feature-content">
+            <div id="mood-diary-content" class="feature-content active">
                 <div class="mood-diary">
                     <form id="mood-form" class="mood-form">
                         <div class="form-group">
@@ -193,6 +160,11 @@
                         <div class="form-group">
                             <label for="mood-text">心情描述</label>
                             <textarea id="mood-text" class="form-control" rows="3" placeholder="今天发生了什么..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="mood-image" class="image-label">添加图片</label>
+                            <input type="file" id="mood-image" class="image-input" accept="image/*">
+                            <div id="mood-image-preview" class="image-preview"></div>
                         </div>
                         <div class="form-actions">
                             <button type="submit" class="submit-button">记录心情</button>
@@ -229,6 +201,26 @@
                     <div id="wish-list" class="wish-list"></div>
                 </div>
             </div>
+            
+            <!-- 留言板 -->
+            <div id="message-board-content" class="feature-content">
+                <div class="message-board-container">
+                    <form id="message-form" class="message-form">
+                        <div class="form-group">
+                            <label for="message-name">昵称</label>
+                            <input type="text" id="message-name" class="form-control" placeholder="请输入您的昵称">
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text">留言内容</label>
+                            <textarea id="message-text" class="form-control" rows="3" placeholder="写下您想说的话..."></textarea>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="submit-button">发送留言</button>
+                        </div>
+                    </form>
+                    <div id="message-list" class="message-list"></div>
+                </div>
+            </div>
         </section>
         
         <footer class="footer">
@@ -247,5 +239,7 @@
     <script src="js/script.js?v=1.0.2"></script>
     <script src="js/ocean.js"></script>
     <script src="js/features.js"></script>
+    <script src="js/message-board.js"></script>
+    <script src="js/mood-display.js"></script>
 </body>
 </html>

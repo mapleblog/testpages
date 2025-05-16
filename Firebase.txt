@@ -1,0 +1,29 @@
+如何设置 Firebase 以确保数据持久化
+1. 创建 Firebase 项目：
+	- 访问 Firebase 控制台
+	- 点击"添加项目"并按照步骤创建一个新项目
+	- 项目名称可以设为 "daycount-vietnam" 或其他您喜欢的名称
+2. 启用 Realtime Database：
+	- 在 Firebase 控制台中，点击左侧菜单的"Realtime Database"
+	- 点击"创建数据库"
+	- 选择"以测试模式启动"（这样任何人都可以读写数据，适合您的情侣网站）
+	- 选择离您最近的数据中心位置
+3. 获取 Firebase 配置：
+	- 在 Firebase 控制台中，点击"项目设置"（齿轮图标）
+	- 在"您的应用"部分，点击网页图标 </> 添加一个网页应用
+	- 注册应用（可以使用 "daycount-vietnam" 作为名称）
+	- 复制显示的 Firebase 配置对象
+		* 对于您的 GitHub Pages 项目，<script> 标签方式是正确的选择， 而不是npm
+		* 复制firebase配置 到 features.js	
+			const firebaseConfig = {
+    				apiKey: "您的API密钥",
+    				authDomain: "您的项目ID.firebaseapp.com",
+    				projectId: "您的项目ID",
+    				storageBucket: "您的项目ID.appspot.com",
+    				messagingSenderId: "您的消息发送者ID",
+    				appId: "您的应用ID",
+    				databaseURL: "https://您的项目ID-default-rtdb.firebaseio.com"
+			};
+4. 更新您的代码：
+	- 打开 js/features.js 文件
+	- 将文件开头的 firebaseConfig 对象替换为您刚才复制的配置
