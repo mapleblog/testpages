@@ -2,14 +2,14 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Firebase 配置
     const firebaseConfig = {
-        apiKey: "AIzaSyCxtfRwm3cGObl3D2lbAkwUeGR2LhGT3FQ",
-    	authorDomain: "daycount-vietnam.firebaseapp.com",
-    	databaseURL: "https://daycount-vietnam-default-rtdb.asia-southeast1.firebasedatabase.app",
-    	projectId: "daycount-vietnam",
-    	storageBucket: "daycount-vietnam.firebasestorage.app",
-    	messagingSenderId: "335860361173",
-    	appId: "1:335860361173:web:931d891d00085d33083f5c",
-    	measurementId: "G-LVPPF0CX2C"
+        apiKey: "AIzaSyCW9goMRxNq2QILQC5UQHemXAz8A1NbMuA",
+    	authDomain: "daycount-test.firebaseapp.com",
+    	databaseURL: "https://daycount-test-default-rtdb.asia-southeast1.firebasedatabase.app",
+    	projectId: "daycount-test",
+    	storageBucket: "daycount-test.firebasestorage.app",
+    	messagingSenderId: "309331763509",
+    	appId: "1:309331763509:web:1569e6bb6527c8b7506c7c",
+    	measurementId: "G-Y44YQ77TDM"
     };
     
     // 初始化 Firebase
