@@ -1,0 +1,292 @@
+/* 留言墙便签风格 */
+/* 留言区域整体布局 */
+.message-section {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* 留言输入区域 - 独立画布 */
+.message-input-container {
+    margin-bottom: 10px;
+}
+
+.message-input-header {
+    position: relative;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.message-input-header h3 {
+    display: inline-block;
+    color: white;
+    font-weight: 600;
+    padding: 0 0 8px 0;
+    margin: 0;
+    position: relative;
+    letter-spacing: 1px;
+}
+
+.message-input-header h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 2px;
+    background: #f8d56f;
+}
+
+.message-input-canvas {
+    padding: 25px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(5px);
+}
+
+/* 留言展示区域 - 独立画布 */
+.message-canvas-container {
+    margin-top: 0;
+}
+
+.message-canvas-header {
+    position: relative;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.message-canvas-header h3 {
+    display: inline-block;
+    color: white;
+    font-weight: 600;
+    padding: 0 0 8px 0;
+    margin: 0;
+    position: relative;
+    letter-spacing: 1px;
+}
+
+.message-canvas-header h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 2px;
+    background: #f8d56f;
+}
+
+.message-canvas {
+    padding: 20px 10px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(5px);
+}
+
+.message-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-height: none !important;
+    padding: 10px;
+    gap: 20px;
+}
+
+.message-item {
+    width: calc(50% - 10px);
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    animation: fadeIn 0.5s ease;
+    padding: 18px;
+    position: relative;
+    color: #000;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: rotate(var(--rotate-deg, 0deg));
+    z-index: 1;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+/* 便签颜色变化 - 更柔和的色调 */
+.message-item:nth-child(4n+1) {
+    --rotate-deg: -1deg;
+    background: #fff9c4; /* 柔和的黄色 */
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.message-item:nth-child(4n+2) {
+    --rotate-deg: 1deg;
+    background: #e8f5e9; /* 柔和的绿色 */
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.message-item:nth-child(4n+3) {
+    --rotate-deg: -0.5deg;
+    background: #e3f2fd; /* 柔和的蓝色 */
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.message-item:nth-child(4n+4) {
+    --rotate-deg: 0.5deg;
+    background: #f3e5f5; /* 柔和的紫色 */
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* 悬停效果 - 更加柔和 */
+.message-item:hover {
+    transform: scale(1.02) rotate(var(--rotate-deg, 0deg));
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+/* 响应式调整 */
+/* 留言内容样式 */
+.message-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.message-item.editing {
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.15), 0 8px 16px rgba(0, 0, 0, 0.1);
+    z-index: 20;
+}
+
+.message-content-edit {
+    width: 100%;
+    min-height: 70px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.9);
+    font-family: inherit;
+    font-size: 0.95rem;
+    resize: vertical;
+    transition: border 0.3s ease;
+}
+
+.message-content-edit:focus {
+    outline: none;
+    border-color: rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.05);
+}
+
+.message-button {
+    background: none;
+    border: none;
+    color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    padding: 5px 8px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    font-size: 0.85rem;
+    margin-left: 8px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.message-button i {
+    margin-right: 4px;
+}
+
+.message-button:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.edit-message-button:hover {
+    color: #3498db;
+}
+
+.save-message-button {
+    background: rgba(46, 204, 113, 0.1);
+}
+
+.save-message-button:hover {
+    color: #2ecc71;
+    background: rgba(46, 204, 113, 0.2);
+}
+
+.cancel-message-button {
+    background: rgba(231, 76, 60, 0.1);
+}
+
+.cancel-message-button:hover {
+    color: #e74c3c;
+    background: rgba(231, 76, 60, 0.2);
+}
+
+.message-author {
+    font-weight: 600;
+    color: #333;
+}
+
+.message-time {
+    font-size: 0.7rem;
+    color: rgba(0, 0, 0, 0.5);
+    font-style: italic;
+}
+
+.message-content {
+    line-height: 1.4;
+    margin-bottom: 8px;
+    word-break: break-word;
+    font-size: 0.95rem;
+}
+
+.message-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.delete-message-button {
+    background: none;
+    border: none;
+    color: rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    padding: 3px 6px;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+    font-size: 0.8rem;
+}
+
+.delete-message-button:hover {
+    color: #e74c3c;
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.empty-message {
+    color: rgba(0, 0, 0, 0.5);
+    text-align: center;
+    padding: 20px;
+    font-style: italic;
+    background: #f9f9f9;
+    border-radius: 8px;
+    border: 1px dashed rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+    .message-item {
+        width: 100%;
+    }
+    
+    .message-item:nth-child(4n+1),
+    .message-item:nth-child(4n+2),
+    .message-item:nth-child(4n+3),
+    .message-item:nth-child(4n+4) {
+        --rotate-deg: 0deg;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

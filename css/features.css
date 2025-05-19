@@ -1,4 +1,4 @@
-/* 功能区域样式 */
+/* u529fu80fdu533au57dfu6837u5f0f */
 .features-section {
     margin-top: 40px;
     background: rgba(0, 0, 0, 0.3);
@@ -23,9 +23,9 @@
 .features-tabs {
     display: flex;
     justify-content: center;
-    margin-bottom: 20px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding-bottom: 10px;
+    margin-bottom: 30px;
+    position: relative;
+    padding: 15px 0;
 }
 
 .feature-tab {
@@ -66,7 +66,7 @@
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* 互动留言板样式 */
+/* u4e92u52a8u7559u8a00u677fu6837u5f0f */
 .message-board {
     margin-top: 20px;
 }
@@ -149,7 +149,7 @@
     justify-content: space-between;
 }
 
-.emoji-picker.active {
+.emoji-picker.show {
     display: flex;
 }
 
@@ -157,7 +157,7 @@
     font-size: 1.5rem;
     padding: 5px;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
 }
 
 .emoji:hover {
@@ -165,7 +165,7 @@
 }
 
 .submit-button {
-    background: linear-gradient(135deg, var(--primary-color), #8c7ae6);
+    background: var(--primary-color);
     color: white;
     border: none;
     padding: 10px 20px;
@@ -173,12 +173,12 @@
     cursor: pointer;
     font-weight: 600;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .submit-button:hover {
+    background: var(--secondary-color);
     transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
 .message-list {
@@ -248,7 +248,7 @@
     word-break: break-word;
 }
 
-/* 留言板样式 */
+/* u7559u8a00u677fu6837u5f0f */
 .message-board-container {
     width: 100%;
 }
@@ -301,16 +301,15 @@
     color: rgba(255, 255, 255, 0.6);
 }
 
-.message-text {
-    color: rgba(255, 255, 255, 0.9);
-    line-height: 1.5;
+.message-content {
+    line-height: 1.6;
+    margin-bottom: 10px;
     word-break: break-word;
 }
 
 .message-actions {
     display: flex;
     justify-content: flex-end;
-    margin-top: 10px;
 }
 
 .delete-message-button {
@@ -318,374 +317,43 @@
     border: none;
     color: rgba(255, 255, 255, 0.7);
     cursor: pointer;
-    transition: all 0.3s ease;
-    padding: 5px;
+    padding: 5px 10px;
     border-radius: 5px;
+    transition: all 0.3s ease;
 }
 
 .delete-message-button:hover {
     color: #ff6b6b;
-    background: rgba(255, 255, 255, 0.1);
 }
 
-.message-actions {
-    display: flex;
-    justify-content: flex-end;
-}
-
-.like-button, .delete-button {
-    background: none;
-    border: none;
-    color: rgba(255, 255, 255, 0.7);
-    cursor: pointer;
-    padding: 5px 10px;
-    margin-left: 10px;
-    border-radius: 5px;
-    transition: all 0.3s ease;
-}
-
-.like-button:hover {
-    color: #e84393;
-}
-
-.delete-button:hover {
+.error-message {
     color: #ff6b6b;
-}
-
-/* 心情日记样式 */
-.mood-diary {
-    margin-top: 20px;
-}
-
-.mood-form {
-    margin-bottom: 20px;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 15px;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.mood-icons {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 15px;
-    flex-wrap: wrap;
-}
-
-.mood-icon {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: rgba(0, 0, 0, 0.2);
-    color: rgba(255, 255, 255, 0.8);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    margin: 5px;
-    font-size: 1.5rem;
-}
-
-.mood-icon:hover {
-    transform: scale(1.1);
-    background: rgba(255, 255, 255, 0.2);
-}
-
-.mood-icon.selected {
-    background: var(--primary-color);
-    color: white;
-    box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.3);
-}
-
-/* 固定显示的心情记录区域 */
-.mood-display-fixed {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 300px;
-    max-height: 400px;
-    overflow-y: auto;
-    background: rgba(0, 0, 0, 0.7);
-    border-radius: 12px;
-    padding: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    z-index: 1000;
-}
-
-.mood-display-fixed .mood-item {
-    border-left: 3px solid var(--primary-color);
-    background: rgba(255, 255, 255, 0.15);
-}
-
-.mood-display-fixed .mood-header {
-    padding-bottom: 8px;
-}
-
-.mood-display-fixed .mood-title {
-    font-weight: 600;
-    color: white;
-    margin-bottom: 10px;
     text-align: center;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    padding-bottom: 5px;
-}
-
-.mood-display-fixed .close-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: none;
-    border: none;
-    color: rgba(255, 255, 255, 0.7);
-    cursor: pointer;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-}
-
-.mood-display-fixed .close-button:hover {
-    color: white;
-}
-
-.mood-display-toggle {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: var(--primary-color);
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    z-index: 999;
-    transition: all 0.3s ease;
-}
-
-.mood-display-toggle:hover {
-    transform: scale(1.1);
-}
-
-.mood-display-toggle i {
-    font-size: 1.5rem;
-}
-
-.mood-list {
-    max-height: 400px;
-    overflow-y: auto;
-    padding-right: 5px;
-}
-
-.mood-list::-webkit-scrollbar {
-    width: 6px;
-}
-
-.mood-list::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.1);
-    border-radius: 3px;
-}
-
-.mood-list::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 3px;
-}
-
-.mood-list::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.3);
-}
-
-.mood-item {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
     padding: 15px;
-    margin-bottom: 15px;
-    border-left: 3px solid var(--secondary-color);
-    transition: all 0.3s ease;
-    animation: slideIn 0.3s ease;
+    background: rgba(255, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-top: 10px;
 }
 
-.mood-item:hover {
-    background: rgba(255, 255, 255, 0.15);
-}
-
-.mood-header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding-bottom: 5px;
-    align-items: center;
-}
-
-.mood-date {
-    font-weight: 600;
-    color: var(--secondary-color);
-}
-
-.mood-icon-display {
-    font-size: 1.2rem;
-}
-
-.mood-time {
-    font-size: 0.8rem;
+.empty-message {
     color: rgba(255, 255, 255, 0.6);
+    text-align: center;
+    padding: 20px;
+    font-style: italic;
 }
 
-.mood-content {
-    margin-bottom: 10px;
-    line-height: 1.5;
-    word-break: break-word;
+/* u52a8u753bu6548u679c */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
 }
 
-.mood-actions {
-    display: flex;
-    justify-content: flex-end;
+.pulse {
+    animation: pulse 2s infinite;
 }
 
-.delete-mood-button {
-    background: none;
-    border: none;
-    color: rgba(255, 255, 255, 0.7);
-    cursor: pointer;
-    padding: 5px 10px;
-    border-radius: 5px;
-    transition: all 0.3s ease;
-}
-
-.delete-mood-button:hover {
-    color: #ff6b6b;
-}
-
-/* 愿望清单样式 */
-.wish-list-container {
-    margin-top: 20px;
-}
-
-.wish-form {
-    margin-bottom: 20px;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 15px;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.form-row {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 15px;
-}
-
-.form-row .form-group {
-    flex: 1;
-    margin-bottom: 0;
-}
-
-.wish-list {
-    max-height: 400px;
-    overflow-y: auto;
-    padding-right: 5px;
-}
-
-.wish-list::-webkit-scrollbar {
-    width: 6px;
-}
-
-.wish-list::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.1);
-    border-radius: 3px;
-}
-
-.wish-list::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 3px;
-}
-
-.wish-list::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.3);
-}
-
-.wish-item {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    padding: 15px;
-    margin-bottom: 15px;
-    border-left: 3px solid #a29bfe;
-    transition: all 0.3s ease;
-    animation: slideIn 0.3s ease;
-}
-
-.wish-item:hover {
-    background: rgba(255, 255, 255, 0.15);
-}
-
-.wish-item.completed {
-    border-left-color: #00b894;
-    background: rgba(0, 184, 148, 0.1);
-}
-
-.wish-item.completed .wish-content {
-    text-decoration: line-through;
-    color: rgba(255, 255, 255, 0.6);
-}
-
-.wish-header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding-bottom: 5px;
-}
-
-.wish-category {
-    font-weight: 600;
-    color: #a29bfe;
-}
-
-.wish-item.completed .wish-category {
-    color: #00b894;
-}
-
-.wish-time {
-    font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.6);
-}
-
-.wish-content {
-    margin-bottom: 10px;
-    line-height: 1.5;
-    word-break: break-word;
-}
-
-.wish-actions {
-    display: flex;
-    justify-content: flex-end;
-}
-
-.complete-wish-button, .delete-wish-button {
-    background: none;
-    border: none;
-    color: rgba(255, 255, 255, 0.7);
-    cursor: pointer;
-    padding: 5px 10px;
-    margin-left: 10px;
-    border-radius: 5px;
-    transition: all 0.3s ease;
-}
-
-.complete-wish-button:hover {
-    color: #00b894;
-}
-
-.delete-wish-button:hover {
-    color: #ff6b6b;
-}
-
-/* 响应式设计 */
+/* u54cdu5e94u5f0fu8c03u6574 */
 @media (max-width: 768px) {
     .features-tabs {
         flex-wrap: wrap;
@@ -695,23 +363,155 @@
         margin-bottom: 10px;
     }
     
-    .form-row {
-        flex-direction: column;
-        gap: 10px;
+    .message-form {
+        padding: 10px;
     }
     
-    .mood-icons {
-        justify-content: center;
+    .form-actions {
+        flex-direction: column;
+    }
+    
+    .submit-button {
+        width: 100%;
+        margin-top: 10px;
     }
 }
 
-@media (max-width: 480px) {
-    .message-header, .mood-header, .wish-header {
-        flex-direction: column;
-        gap: 5px;
+.delete-message-button {
+    color: rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    padding: 3px 6px;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+    font-size: 0.8rem;
+}
+
+.delete-message-button:hover {
+    color: #e74c3c;
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.error-message {
+    color: #ff6b6b;
+    text-align: center;
+    padding: 15px;
+    background: rgba(255, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.empty-message {
+    color: rgba(255, 255, 255, 0.6);
+    text-align: center;
+    padding: 20px;
+    font-style: italic;
+}
+
+/* 分页控件样式 */
+.pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+}
+
+.pagination-controls.simple {
+    background: transparent;
+    padding: 5px;
+}
+
+.page-button {
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.page-button:hover {
+    background: var(--secondary-color);
+}
+
+.page-button:disabled {
+    background: rgba(255, 255, 255, 0.2);
+    cursor: not-allowed;
+}
+
+#page-info {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem;
+    margin: 0 10px;
+}
+
+/* 点赞按钮样式 */
+.like-button {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.like-button:hover {
+    color: #ff6b6b;
+}
+
+.like-button.liked {
+    color: #ff6b6b;
+}
+
+.like-count {
+    margin-left: 5px;
+    font-size: 0.9rem;
+}
+
+.message-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+/* u52a8u753bu6548u679c */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+/* u54cdu5e94u5f0fu8c03u6574 */
+@media (max-width: 768px) {
+    .features-tabs {
+        flex-wrap: wrap;
     }
     
-    .message-actions, .mood-actions, .wish-actions {
+    .feature-tab {
+        margin-bottom: 10px;
+    }
+    
+    .message-form {
+        padding: 10px;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+    }
+    
+    .submit-button {
+        width: 100%;
         margin-top: 10px;
     }
 }

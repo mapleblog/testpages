@@ -6,8 +6,14 @@
     <title>Friendship</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/features.css">
+    <link rel="stylesheet" href="css/message-wall.css">
+    <link rel="stylesheet" href="css/message-tab.css">
+    <link rel="stylesheet" href="css/message-form.css">
+    <link rel="stylesheet" href="css/mood-diary.css">
+    <link rel="stylesheet" href="css/wishlist.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+    <script src="js/script.js"></script>
 </head>
 <body>
     <!-- Ocean background -->
@@ -135,90 +141,166 @@
         
         <!-- 功能区域 -->
         <section class="features-section">
-            <div class="features-tabs">
-                <div class="feature-tab active" data-target="mood-diary-content">心情日记</div>
-                <div class="feature-tab" data-target="wish-list-content">愿望清单</div>
-                <div class="feature-tab" data-target="message-board-content">留言板</div>
+            <div class="feature-tabs">
+                <div class="feature-tab active" data-target="message-board-content">留言板</div>
+                <div class="feature-tab" data-target="mood-diary-content">心情日记</div>
+                <div class="feature-tab" data-target="wishlist-content">愿望清单</div>
             </div>
             
-            <!-- 心情日记 -->
-            <div id="mood-diary-content" class="feature-content active">
-                <div class="mood-diary">
-                    <form id="mood-form" class="mood-form">
-                        <div class="form-group">
-                            <label>今天的心情</label>
-                            <div class="mood-icons">
-                                <div class="mood-icon" data-mood="happy"><i class="fas fa-smile"></i></div>
-                                <div class="mood-icon" data-mood="sad"><i class="fas fa-frown"></i></div>
-                                <div class="mood-icon" data-mood="angry"><i class="fas fa-angry"></i></div>
-                                <div class="mood-icon" data-mood="surprised"><i class="fas fa-surprise"></i></div>
-                                <div class="mood-icon" data-mood="neutral"><i class="fas fa-meh"></i></div>
-                                <div class="mood-icon" data-mood="love"><i class="fas fa-heart"></i></div>
-                                <div class="mood-icon" data-mood="tired"><i class="fas fa-tired"></i></div>
-                            </div>
+            <!-- 留言板区域 -->
+            <div id="message-board-content" class="feature-content active">
+                <div class="message-section">
+                    <!-- 留言输入区域 - 独立画布 -->
+                    <div class="message-input-container">
+                        <div class="message-input-header">
+                            <h3><i class="fas fa-pencil-alt"></i> 留言板</h3>
                         </div>
-                        <div class="form-group">
-                            <label for="mood-text">心情描述</label>
-                            <textarea id="mood-text" class="form-control" rows="3" placeholder="今天发生了什么..."></textarea>
+                        <div class="message-input-canvas">
+                            <form id="message-form" class="message-form">
+                                <div class="form-group">
+                                    <input type="text" id="message-name" class="form-control" placeholder="您的昵称">
+                                </div>
+                                <div class="form-group">
+                                    <textarea id="message-text" class="form-control" rows="3" placeholder="写下您想说的话..."></textarea>
+                                </div>
+                                <div class="form-actions">
+                                    <button type="submit" class="submit-button">发送</button>
+                                </div>
+                            </form>
                         </div>
-                        <div class="form-group">
-                            <label for="mood-image" class="image-label">添加图片</label>
-                            <input type="file" id="mood-image" class="image-input" accept="image/*">
-                            <div id="mood-image-preview" class="image-preview"></div>
+                    </div>
+                    
+                    <!-- 留言展示区域 - 独立画布 -->
+                    <div class="message-canvas-container">
+                        <div class="message-canvas-header">
+                            <h3><i class="fas fa-comments"></i> 留言墙</h3>
                         </div>
-                        <div class="form-actions">
-                            <button type="submit" class="submit-button">记录心情</button>
+                        <div class="message-canvas">
+                            <div id="message-list" class="message-list"></div>
                         </div>
-                    </form>
-                    <div id="mood-list" class="mood-list"></div>
+                    </div>
                 </div>
             </div>
             
-            <!-- 愿望清单 -->
-            <div id="wish-list-content" class="feature-content">
-                <div class="wish-list-container">
-                    <form id="wish-form" class="wish-form">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="wish-text">愿望内容</label>
-                                <input type="text" id="wish-text" class="form-control" placeholder="添加一个新愿望...">
-                            </div>
-                            <div class="form-group">
-                                <label for="wish-category">分类</label>
-                                <select id="wish-category" class="form-control">
-                                    <option value="旅行">旅行</option>
-                                    <option value="美食">美食</option>
-                                    <option value="活动">活动</option>
-                                    <option value="购物">购物</option>
-                                    <option value="其他">其他</option>
-                                </select>
-                            </div>
+            <!-- 心情日记区域 -->
+            <div id="mood-diary-content" class="feature-content">
+                <div class="mood-diary-section">
+                    <!-- 心情日记输入区域 -->
+                    <div class="mood-input-container">
+                        <div class="mood-input-header">
+                            <h3><i class="fas fa-book"></i> 新建日记</h3>
                         </div>
-                        <div class="form-actions">
-                            <button type="submit" class="submit-button">添加愿望</button>
+                        <div class="mood-input-canvas">
+                            <form id="mood-form" class="mood-form">
+                                <div class="form-group">
+                                    <input type="text" id="mood-title" class="form-control" placeholder="日记标题">
+                                </div>
+                                <div class="form-group mood-selection">
+                                    <label>今日心情</label>
+                                    <div class="mood-icons">
+                                        <div class="mood-icon" data-mood="happy">
+                                            <i class="fas fa-smile"></i>
+                                            <span>开心</span>
+                                        </div>
+                                        <div class="mood-icon" data-mood="calm">
+                                            <i class="fas fa-meh"></i>
+                                            <span>平静</span>
+                                        </div>
+                                        <div class="mood-icon" data-mood="sad">
+                                            <i class="fas fa-frown"></i>
+                                            <span>难过</span>
+                                        </div>
+                                        <div class="mood-icon" data-mood="excited">
+                                            <i class="fas fa-grin-stars"></i>
+                                            <span>兴奋</span>
+                                        </div>
+                                        <div class="mood-icon" data-mood="tired">
+                                            <i class="fas fa-tired"></i>
+                                            <span>疲惫</span>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" id="selected-mood" value="">
+                                </div>
+                                <div class="form-group">
+                                    <textarea id="mood-content" class="form-control" rows="5" placeholder="写下今天的心情和感受..."></textarea>
+                                </div>
+                                <div class="form-actions">
+                                    <button type="submit" class="submit-button">保存日记</button>
+                                </div>
+                            </form>
                         </div>
-                    </form>
-                    <div id="wish-list" class="wish-list"></div>
+                    </div>
+                    
+                    <!-- 心情日记展示区域 -->
+                    <div class="mood-display-container">
+                        <div class="mood-display-header">
+                            <h3><i class="fas fa-calendar-alt"></i> 日记列表</h3>
+                        </div>
+                        <div class="mood-display-canvas">
+                            <div id="mood-list" class="mood-list"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
             
-            <!-- 留言板 -->
-            <div id="message-board-content" class="feature-content">
-                <div class="message-board-container">
-                    <form id="message-form" class="message-form">
-                        <div class="form-group">
-                            <label for="message-name">昵称</label>
-                            <input type="text" id="message-name" class="form-control" placeholder="请输入您的昵称">
+            <!-- 愿望清单区域 -->
+            <div id="wishlist-content" class="feature-content">
+                <div class="wishlist-section">
+                    <!-- 愿望清单输入区域 -->
+                    <div class="wishlist-input-container">
+                        <div class="wishlist-input-header">
+                            <h3><i class="fas fa-star"></i> 新建愿望</h3>
                         </div>
-                        <div class="form-group">
-                            <label for="message-text">留言内容</label>
-                            <textarea id="message-text" class="form-control" rows="3" placeholder="写下您想说的话..."></textarea>
+                        <div class="wishlist-input-canvas">
+                            <form id="wishlist-form" class="wishlist-form">
+                                <div class="form-group">
+                                    <input type="text" id="wish-title" class="form-control" placeholder="愿望标题">
+                                </div>
+                                <div class="form-group wish-type-selection">
+                                    <label>类型</label>
+                                    <div class="wish-type-options">
+                                        <div class="wish-type-option" data-type="travel">
+                                            <i class="fas fa-plane"></i>
+                                            <span>旅行</span>
+                                        </div>
+                                        <div class="wish-type-option" data-type="food">
+                                            <i class="fas fa-utensils"></i>
+                                            <span>美食</span>
+                                        </div>
+                                        <div class="wish-type-option" data-type="activity">
+                                            <i class="fas fa-hiking"></i>
+                                            <span>活动</span>
+                                        </div>
+                                        <div class="wish-type-option" data-type="other">
+                                            <i class="fas fa-star"></i>
+                                            <span>其他</span>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" id="selected-type" value="">
+                                </div>
+                                <div class="form-group">
+                                    <textarea id="wish-description" class="form-control" rows="4" placeholder="描述您的愿望..."></textarea>
+                                </div>
+                                <div class="form-group date-selection">
+                                    <label>目标日期（可选）</label>
+                                    <input type="date" id="wish-target-date" class="form-control">
+                                </div>
+                                <div class="form-actions">
+                                    <button type="submit" class="submit-button">添加愿望</button>
+                                </div>
+                            </form>
                         </div>
-                        <div class="form-actions">
-                            <button type="submit" class="submit-button">发送留言</button>
+                    </div>
+                    
+                    <!-- 愿望清单展示区域 -->
+                    <div class="wishlist-display-container">
+                        <div class="wishlist-display-header">
+                            <h3><i class="fas fa-list-alt"></i> 愿望清单</h3>
                         </div>
-                    </form>
-                    <div id="message-list" class="message-list"></div>
+                        <div class="wishlist-display-canvas">
+                            <div id="wish-list" class="wish-list"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -240,6 +322,7 @@
     <script src="js/ocean.js"></script>
     <script src="js/features.js"></script>
     <script src="js/message-board.js"></script>
-    <script src="js/mood-display.js"></script>
+    <script src="js/mood-diary.js"></script>
+    <script src="js/wishlist.js"></script>
 </body>
 </html>

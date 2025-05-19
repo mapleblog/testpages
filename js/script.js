@@ -29,8 +29,16 @@ document.addEventListener('DOMContentLoaded', function() {
         // 音乐列表
         const playlist = [
             {
-                title: 'Dream',
-                src: 'music/dream.mp3'
+                title: 'Stephen Sanchez - Until I Found You',
+                src: '/nice2meetyou/music/UntilIFoundYou.mp3'
+            },
+            {
+                title: 'Pretty Boy',
+                src: '/nice2meetyou/music/PrettyBoy.mp3'
+            },
+            {
+                title: '去追风吧',
+                src: '/nice2meetyou/music/dream.mp3'
             }
             // 可以根据需要添加更多音乐
         ];

@@ -1,0 +1,133 @@
+/* 留言表单样式 - 独立画布风格 */
+/* 留言区域整体布局 */
+.features-section {
+    padding-top: 20px;
+}
+
+.message-section {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* 留言输入区域样式 */
+.message-input-container {
+    margin-bottom: 10px;
+}
+
+.message-input-header {
+    position: relative;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.message-input-header h3 {
+    display: inline-block;
+    color: white;
+    font-weight: 600;
+    padding: 0 0 8px 0;
+    margin: 0;
+    position: relative;
+    letter-spacing: 1px;
+}
+
+.message-input-header h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 2px;
+    background: #f8d56f;
+}
+
+.message-input-canvas {
+    padding: 25px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* 表单元素样式 */
+.message-form {
+    margin-bottom: 0;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05) inset;
+}
+
+.form-control::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: rgba(248, 213, 111, 0.5);
+    background: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 0 0 3px rgba(248, 213, 111, 0.2);
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.submit-button {
+    background: rgba(248, 213, 111, 0.9);
+    color: #333;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.submit-button:hover {
+    background: rgba(248, 213, 111, 1);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .message-input-canvas {
+        padding: 15px;
+    }
+    
+    .form-control {
+        padding: 10px;
+        font-size: 14px;
+    }
+    
+    .submit-button {
+        padding: 8px 20px;
+        width: 100%;
+    }
+    
+    .form-actions {
+        margin-top: 15px;
+    }
+}

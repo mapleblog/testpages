@@ -1,0 +1,319 @@
+/* u613fu671bu6e05u5355u6837u5f0f */
+.wishlist-section {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* u613fu671bu6e05u5355u8f93u5165u533au57df */
+.wishlist-input-container {
+    margin-bottom: 10px;
+}
+
+.wishlist-input-header {
+    position: relative;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.wishlist-input-header h3 {
+    display: inline-block;
+    color: white;
+    font-weight: 600;
+    padding: 0 0 8px 0;
+    margin: 0;
+    position: relative;
+    letter-spacing: 1px;
+}
+
+.wishlist-input-header h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 2px;
+    background: #f8d56f;
+}
+
+.wishlist-input-canvas {
+    padding: 25px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* u4f18u5148u7ea7u9009u62e9u533au57df */
+.wish-type-selection {
+    margin-bottom: 20px;
+}
+
+.wish-type-selection label {
+    display: block;
+    margin-bottom: 10px;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 500;
+}
+
+.wish-type-options {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+.wish-type-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px 20px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.08);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    flex: 1;
+    min-width: 80px;
+}
+
+.wish-type-option i {
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.wish-type-option span {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.wish-type-option:hover {
+    background: rgba(255, 255, 255, 0.12);
+    transform: translateY(-2px);
+}
+
+.wish-type-option.selected {
+    border-color: #f8d56f;
+    background: rgba(248, 213, 111, 0.1);
+}
+
+.wish-type-option.selected i,
+.wish-type-option.selected span {
+    color: #f8d56f;
+}
+
+/* 类型颜色 */
+.wish-type-option[data-type="travel"] i { color: #64b5f6; } /* 蓝色代表旅行 */
+.wish-type-option[data-type="food"] i { color: #ff8a65; } /* 橙色代表美食 */
+.wish-type-option[data-type="activity"] i { color: #81c784; } /* 绿色代表活动 */
+.wish-type-option[data-type="other"] i { color: #ba68c8; } /* 紫色代表其他 */
+
+/* u65e5u671fu9009u62e9u533au57df */
+.date-selection {
+    margin-bottom: 20px;
+}
+
+.date-selection label {
+    display: block;
+    margin-bottom: 10px;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 500;
+}
+
+/* u613fu671bu6e05u5355u5c55u793au533au57df */
+.wishlist-display-container {
+    margin-top: 0;
+}
+
+.wishlist-display-header {
+    position: relative;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.wishlist-display-header h3 {
+    display: inline-block;
+    color: white;
+    font-weight: 600;
+    padding: 0 0 8px 0;
+    margin: 0;
+    position: relative;
+    letter-spacing: 1px;
+}
+
+.wishlist-display-header h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 2px;
+    background: #f8d56f;
+}
+
+.wishlist-display-canvas {
+    padding: 20px 10px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(5px);
+    min-height: 300px;
+}
+
+.wish-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* u613fu671bu9879u6837u5f0f */
+.wish-item {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 18px;
+    position: relative;
+    transition: all 0.3s ease;
+    border-left: 3px solid transparent;
+    animation: fadeIn 0.5s ease;
+}
+
+.wish-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.wish-item[data-type="travel"] { border-left-color: #64b5f6; } /* 蓝色代表旅行 */
+.wish-item[data-type="food"] { border-left-color: #ff8a65; } /* 橙色代表美食 */
+.wish-item[data-type="activity"] { border-left-color: #81c784; } /* 绿色代表活动 */
+.wish-item[data-type="other"] { border-left-color: #ba68c8; } /* 紫色代表其他 */
+
+.wish-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.wish-item-title {
+    font-weight: 600;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.wish-item-title i {
+    font-size: 16px;
+}
+
+.wish-item-date {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.wish-item-date i {
+    font-size: 14px;
+}
+
+.wish-item-description {
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 15px;
+    word-break: break-word;
+}
+
+.wish-item-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.wish-action-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.wish-status {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.wish-status.completed {
+    color: #4caf50;
+}
+
+.wish-action-button {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    padding: 5px 8px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    font-size: 0.85rem;
+    display: inline-flex;
+    align-items: center;
+}
+
+.wish-action-button i {
+    margin-right: 4px;
+}
+
+.wish-action-button:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+}
+
+.complete-wish-button:hover {
+    color: #4caf50;
+}
+
+.edit-wish-button:hover {
+    color: #3498db;
+}
+
+.delete-wish-button:hover {
+    color: #e74c3c;
+}
+
+/* u54cdu5e94u5f0fu8c03u6574 */
+@media (max-width: 768px) {
+    .priority-options {
+        flex-direction: column;
+    }
+    
+    .wish-item-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+    
+    .wish-item-actions {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .wish-action-buttons {
+        width: 100%;
+        justify-content: space-between;
+    }
+}
