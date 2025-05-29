@@ -1,0 +1,123 @@
+/* 留言表情反应样式 */
+.emoji-reactions-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+    padding-top: 8px;
+    border-top: 1px dashed rgba(0, 0, 0, 0.1);
+}
+
+.emoji-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 1.2rem;
+    user-select: none;
+    position: relative;
+}
+
+.emoji-button:hover {
+    background: rgba(255, 255, 255, 0.9);
+    transform: translateY(-2px) scale(1.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.emoji-button.active {
+    background: rgba(255, 255, 255, 0.8);
+    border-color: rgba(66, 133, 244, 0.3);
+    box-shadow: 0 0 5px rgba(66, 133, 244, 0.2);
+}
+
+.emoji-button.active-by-me {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: rgba(66, 133, 244, 0.5);
+    box-shadow: 0 0 5px rgba(66, 133, 244, 0.3);
+    transform: scale(1.1);
+}
+
+.emoji-button .emoji {
+    font-size: 1.2rem;
+}
+
+/* 表情按钮颜色 */
+.emoji-button[data-emoji="thumbs_up"] {
+    color: #4267B2;
+}
+
+.emoji-button[data-emoji="heart"] {
+    color: #F25268;
+}
+
+.emoji-button[data-emoji="smile"] {
+    color: #FFD54F;
+}
+
+.emoji-button[data-emoji="wow"] {
+    color: #FFB74D;
+}
+
+.emoji-button[data-emoji="sad"] {
+    color: #90A4AE;
+}
+
+.emoji-button[data-emoji="clap"] {
+    color: #81C784;
+}
+
+/* 动画效果 */
+@keyframes emoji-pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.emoji-button.just-clicked .emoji {
+    animation: emoji-pulse 0.5s ease-in-out;
+}
+
+/* 心情日记和愿望清单中的表情样式 */
+.mood-item .emoji-reactions-container,
+.wish-item .emoji-reactions-container {
+    margin-top: 12px;
+    border-top: 1px dashed rgba(255, 255, 255, 0.2);
+    padding-top: 10px;
+}
+
+.mood-item .emoji-button,
+.wish-item .emoji-button {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.mood-item .emoji-button:hover,
+.wish-item .emoji-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.mood-item .emoji-button.active,
+.wish-item .emoji-button.active {
+    background: rgba(248, 213, 111, 0.2);
+    border-color: rgba(248, 213, 111, 0.5);
+}
+
+/* 添加发光效果 */
+.emoji-button.active-by-me {
+    animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    }
+    to {
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 15px rgba(255, 255, 255, 0.3);
+    }
+}

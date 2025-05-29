@@ -154,9 +154,9 @@ document.addEventListener('DOMContentLoaded', function() {
         
         updateMessageElementContent(messageElement, message);
         
-        // 添加表情反应功能
-        if (window.ReactionsModule && !messageElement.querySelector('.reactions-container')) {
-            window.ReactionsModule.initReactions('MESSAGE', message.id, messageElement);
+        // 添加表情功能
+        if (window.SimpleEmojiModule) {
+            window.SimpleEmojiModule.initEmojis('MESSAGE', message.id, messageElement);
         }
         
         return messageElement;
@@ -164,8 +164,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 更新留言元素内容
     function updateMessageElementContent(messageElement, message) {
-        // 保存表情反应容器（如果存在）
-        const reactionsContainer = messageElement.querySelector('.reactions-container');
         
         // 检查是否处于编辑模式
         if (editingMessageId === message.id) {
@@ -252,14 +250,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
             `;
             
-            // 如果之前有表情反应容器，重新添加
-            if (reactionsContainer) {
-                messageElement.appendChild(reactionsContainer);
-            }
-            // 如果没有表情反应容器且ReactionsModule可用，初始化表情反应
-            else if (window.ReactionsModule && !messageElement.querySelector('.reactions-container')) {
-                window.ReactionsModule.initReactions('MESSAGE', message.id, messageElement);
-            }
+            // 之前的表情功能已移除
             
             // 添加编辑按钮事件
             const editButton = messageElement.querySelector('.edit-message-button');
