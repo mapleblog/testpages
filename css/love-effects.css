@@ -1,0 +1,185 @@
+/* 恋人特效 CSS - 生动版 */
+.heart-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 60px;
+    z-index: 5;
+}
+
+/* 炫彩连接线 */
+.heart-container::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -50px;
+    right: -50px;
+    height: 2px;
+    background: linear-gradient(90deg, 
+        rgba(255,105,180,0) 0%, 
+        rgba(255,105,180,0.5) 20%, 
+        rgba(255,20,147,0.8) 50%, 
+        rgba(255,105,180,0.5) 80%, 
+        rgba(255,105,180,0) 100%);
+    transform: translateY(-50%);
+    z-index: 1;
+    box-shadow: 0 0 10px rgba(255,105,180,0.7);
+    animation: line-pulse 3s ease-in-out infinite;
+}
+
+/* 炫彩爱心 */
+.heart {
+    position: relative;
+    font-size: 2.8rem;
+    background-image: linear-gradient(45deg, #ff3366 0%, #ff9966 50%, #ff3366 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+    margin: 0;
+    z-index: 2;
+    filter: drop-shadow(0 0 8px rgba(255,51,102,0.8));
+    animation: colorful-pulse 2s ease-in-out infinite, gradient-shift 3s linear infinite;
+}
+
+/* 心形光晕 */
+.heart::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 45px;
+    height: 45px;
+    background: radial-gradient(circle, rgba(255,105,180,0.7) 0%, rgba(255,20,147,0.4) 40%, rgba(255,105,180,0) 70%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    filter: blur(4px);
+    animation: glow-pulse 3s ease-in-out infinite;
+}
+
+/* 生动动画效果 */
+@keyframes colorful-pulse {
+    0%, 100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 5px rgba(255,51,102,0.7));
+    }
+    50% {
+        transform: scale(1.2);
+        filter: drop-shadow(0 0 10px rgba(255,51,102,0.9));
+    }
+}
+
+@keyframes gradient-shift {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+@keyframes glow-pulse {
+    0%, 100% {
+        width: 45px;
+        height: 45px;
+        opacity: 0.7;
+        filter: blur(4px);
+    }
+    50% {
+        width: 60px;
+        height: 60px;
+        opacity: 0.4;
+        filter: blur(6px);
+    }
+}
+
+@keyframes line-pulse {
+    0%, 100% {
+        opacity: 0.7;
+        height: 2px;
+        box-shadow: 0 0 10px rgba(255,105,180,0.7);
+    }
+    50% {
+        opacity: 0.9;
+        height: 3px;
+        box-shadow: 0 0 15px rgba(255,105,180,0.9);
+    }
+}
+
+/* 添加小爱心动画 */
+@keyframes float-mini-heart {
+    0% {
+        transform: translateY(0) scale(0.8);
+        opacity: 0;
+    }
+    20% {
+        opacity: 0.8;
+    }
+    80% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(-20px) scale(1.2);
+        opacity: 0;
+    }
+}
+
+/* 小爱心元素 */
+.mini-heart {
+    position: absolute;
+    font-size: 0.7rem;
+    color: #ff3366;
+    z-index: 3;
+    animation: float-mini-heart 3s ease-out infinite;
+    opacity: 0;
+}
+
+.mini-heart:nth-child(1) {
+    top: 5px;
+    left: 10px;
+    animation-delay: 0s;
+}
+
+.mini-heart:nth-child(2) {
+    top: 0px;
+    left: -5px;
+    animation-delay: 0.5s;
+}
+
+.mini-heart:nth-child(3) {
+    top: 8px;
+    left: -10px;
+    animation-delay: 1s;
+}
+
+.mini-heart:nth-child(4) {
+    top: -5px;
+    left: 5px;
+    animation-delay: 1.5s;
+}
+
+/* 媒体查询 - 移动设备 */
+@media (max-width: 768px) {
+    .heart {
+        font-size: 2.2rem;
+    }
+    
+    .heart-container::before {
+        left: -30px;
+        right: -30px;
+    }
+    
+    .heart-container {
+        width: 80px;
+        height: 50px;
+    }
+    
+    .heart::after {
+        width: 35px;
+        height: 35px;
+    }
+}

@@ -1,0 +1,25 @@
+/* 图片保护样式 */
+.protected-image {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    pointer-events: none; /* 禁用鼠标事件 */
+    position: relative;
+}
+
+/* 在图片上添加一个透明覆盖层，进一步防止保存 */
+.avatar {
+    position: relative;
+}
+
+.avatar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    z-index: 1;
+}

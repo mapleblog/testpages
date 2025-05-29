@@ -4,6 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Friendship</title>
+    
+    <!-- 标准favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    
+    <!-- Apple设备 -->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    
+    <!-- Android/Chrome -->
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    
+    <!-- Microsoft应用 -->
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="mstile-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    
+    <!-- 网站清单 -->
+    <link rel="manifest" href="site.webmanifest">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/features.css">
     <link rel="stylesheet" href="css/message-wall.css">
@@ -11,12 +30,22 @@
     <link rel="stylesheet" href="css/message-form.css">
     <link rel="stylesheet" href="css/mood-diary.css">
     <link rel="stylesheet" href="css/wishlist.css">
+    <link rel="stylesheet" href="css/ocean-effect.css">
+    <link rel="stylesheet" href="css/image-protection.css">
+    <link rel="stylesheet" href="css/mobile-optimization.css">
+    <link rel="stylesheet" href="css/profile-redesign.css">
+    <link rel="stylesheet" href="css/reactions.css">
+    <link rel="stylesheet" href="css/love-effects.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
     <script src="js/script.js"></script>
 </head>
 <body>
     <!-- Ocean background -->
+    <div class="ocean-effect">
+        <div class="wave"></div>
+        <div class="wave"></div>
+    </div>
     <div id="particles-js"></div>
     <div id="ocean"></div>
     
@@ -46,7 +75,7 @@
             <div class="avatars">
                 <div class="avatar-container">
                     <div class="avatar" id="avatar1">
-                        <img src="img/owl.png" alt="头像1" id="avatar1-img">
+                        <img src="img/profile1.jpg" alt="头像1" id="avatar1-img" oncontextmenu="return false" draggable="false" class="protected-image">
                     </div>
                     <div class="name-display">啊康</div>
                     <div class="profile-canvas">
@@ -76,13 +105,19 @@
                     </div>
                 </div>
                 
-                <div class="heart">
-                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                <div class="heart-container">
+                    <div class="heart">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="mini-heart"><i class="fas fa-heart"></i></div>
+                    <div class="mini-heart"><i class="fas fa-heart"></i></div>
+                    <div class="mini-heart"><i class="fas fa-heart"></i></div>
+                    <div class="mini-heart"><i class="fas fa-heart"></i></div>
                 </div>
                 
                 <div class="avatar-container">
                     <div class="avatar" id="avatar2">
-                        <img src="img/profile2.jpg" alt="头像2" id="avatar2-img">
+                        <img src="img/profile.png" alt="头像2" id="avatar2-img" oncontextmenu="return false" draggable="false" class="protected-image">
                     </div>
                     <div class="name-display">啊庄</div>
                     <div class="profile-canvas">
@@ -317,12 +352,16 @@
     <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="js/firebase-config.js"></script>
     
     <script src="js/script.js?v=1.0.2"></script>
-    <script src="js/ocean.js"></script>
     <script src="js/features.js"></script>
+    <script src="js/reactions-fixed-final.js"></script>
+    <script src="js/reactions-integration.js"></script>
     <script src="js/message-board.js"></script>
     <script src="js/mood-diary.js"></script>
+    <script src="js/image-protection.js"></script>
     <script src="js/wishlist.js"></script>
+    <script src="js/ocean-effect.js"></script>
 </body>
 </html>

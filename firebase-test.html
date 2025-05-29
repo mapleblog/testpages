@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firebase 测试页面</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            padding: 0;
+        }
+        h1 {
+            color: #333;
+        }
+        .test-result {
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .success {
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+        .error {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+        .info {
+            background-color: #e2f0fb;
+            border: 1px solid #bee5eb;
+            color: #0c5460;
+        }
+        pre {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+            overflow: auto;
+        }
+        #results {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Firebase 连接测试</h1>
+    
+    <div id="status">正在检查 Firebase 连接状态...</div>
+    
+    <div id="results"></div>
+    
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    
+    <!-- 引入 Firebase 配置文件 -->
+    <script src="js/firebase-config.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const statusEl = document.getElementById('status');
+            const resultsEl = document.getElementById('results');
+            
+            // 显示状态信息
+            function showStatus(message, type) {
+                statusEl.textContent = message;
+                statusEl.className = `test-result ${type}`;
+            }
+            
+            // 添加结果
+            function addResult(title, content, type) {
+                const resultDiv = document.createElement('div');
+                resultDiv.className = `test-result ${type}`;
+                
+                const titleEl = document.createElement('h3');
+                titleEl.textContent = title;
+                resultDiv.appendChild(titleEl);
+                
+                if (typeof content === 'object') {
+                    const pre = document.createElement('pre');
+                    pre.textContent = JSON.stringify(content, null, 2);
+                    resultDiv.appendChild(pre);
+                } else {
+                    const contentEl = document.createElement('p');
+                    contentEl.textContent = content;
+                    resultDiv.appendChild(contentEl);
+                }
+                
+                resultsEl.appendChild(resultDiv);
+            }
+            
+            // 等待 Firebase 初始化
+            function waitForFirebase() {
+                if (window.firebaseInitialized) {
+                    showStatus('Firebase 已初始化', 'success');
+                    testFirebaseConnection();
+                } else {
+                    showStatus('等待 Firebase 初始化...', 'info');
+                    
+                    // 监听初始化完成事件
+                    document.addEventListener('firebaseInitialized', function() {
+                        showStatus('Firebase 初始化完成', 'success');
+                        testFirebaseConnection();
+                    });
+                    
+                    // 设置超时
+                    setTimeout(function() {
+                        if (!window.firebaseInitialized) {
+                            showStatus('Firebase 初始化超时', 'error');
+                            addResult('初始化失败', '无法初始化 Firebase，请检查配置和网络连接', 'error');
+                        }
+                    }, 5000);
+                }
+            }
+            
+            // 测试 Firebase 连接
+            function testFirebaseConnection() {
+                try {
+                    const db = firebase.database();
+                    
+                    // 测试连接状态
+                    db.ref('.info/connected').on('value', function(snap) {
+                        if (snap.val() === true) {
+                            showStatus('已成功连接到 Firebase 数据库', 'success');
+                            testMessagesData();
+                        } else {
+                            showStatus('未连接到 Firebase 数据库', 'error');
+                        }
+                    });
+                } catch (error) {
+                    showStatus('Firebase 连接测试失败', 'error');
+                    addResult('连接错误', error.message, 'error');
+                }
+            }
+            
+            // 测试留言数据
+            function testMessagesData() {
+                try {
+                    const db = firebase.database();
+                    
+                    // 读取留言数据
+                    db.ref('messages').once('value')
+                        .then(snapshot => {
+                            const data = snapshot.val();
+                            
+                            if (data) {
+                                const messagesArray = Object.values(data);
+                                addResult(
+                                    '留言数据读取成功', 
+                                    `共找到 ${messagesArray.length} 条留言`, 
+                                    'success'
+                                );
+                                
+                                // 显示留言数据
+                                addResult('留言数据内容', data, 'info');
+                            } else {
+                                addResult('留言数据为空', '没有找到任何留言数据', 'info');
+                            }
+                        })
+                        .catch(error => {
+                            addResult('读取留言数据失败', error.message, 'error');
+                        });
+                } catch (error) {
+                    addResult('测试留言数据失败', error.message, 'error');
+                }
+            }
+            
+            // 开始测试
+            waitForFirebase();
+        });
+    </script>
+</body>
+</html>

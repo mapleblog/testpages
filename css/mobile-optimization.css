@@ -1,0 +1,49 @@
+/* u79fbu52a8u7aefu5934u50cfu533au5757u5c45u4e2du4f18u5316 */
+@media (max-width: 768px) {
+    /* u5934u50cfu533au5757u5c45u4e2du4f18u5316 */
+    .avatars {
+        flex-direction: column;
+        gap: 30px;
+        margin: 30px auto;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .avatar-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        max-width: 280px;
+        margin: 0 auto;
+    }
+
+    /* u5fc3u5f62u533au57dfu5728u79fbu52a8u7aefu4e0au7684u5c55u793a */
+    .heart {
+        display: none;
+    }
+
+    /* u5934u50cfu5c3au5bf8u4fddu6301u4e0du53d8 */
+    .avatar {
+        width: 180px !important;
+        height: 180px !important;
+        margin: 0 auto;
+    }
+
+    /* u540du79f0u663eu793au4f18u5316 */
+    .name-display {
+        margin-top: 15px;
+        text-align: center;
+        width: 100%;
+    }
+
+    /* 个人资料区域优化 */
+    .profile-canvas {
+        width: 110%;
+        max-width: 320px;
+        margin: 15px auto 0;
+        margin-left: -5%;
+    }
+}
