@@ -1,0 +1,405 @@
+.relationship-confirmation {
+    margin: 40px auto;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(147, 88, 247, 0.85), rgba(20, 184, 166, 0.85));
+    border-radius: 20px;
+    padding: 35px;
+    box-shadow: 0 15px 35px rgba(147, 88, 247, 0.4), 0 5px 15px rgba(20, 184, 166, 0.3);
+    max-width: 600px;
+    position: relative;
+    overflow: visible;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    animation: backgroundShift 15s infinite alternate;
+}
+
+@keyframes backgroundShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.relationship-confirmation::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border-radius: 25px;
+    background: linear-gradient(45deg, #ff6b6b, #9358f7, #14b8a6, #0ea5e9, #ff6b6b);
+    background-size: 400% 400%;
+    z-index: -1;
+    filter: blur(10px);
+    opacity: 0.7;
+    animation: gradientBorder 8s ease infinite;
+}
+
+@keyframes gradientBorder {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.relationship-confirmation h3 {
+    color: white;
+    margin-bottom: 20px;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), 0 0 10px rgba(255, 255, 255, 0.5);
+    position: relative;
+    display: inline-block;
+    padding: 0 15px;
+}
+
+.relationship-confirmation h3::before,
+.relationship-confirmation h3::after {
+    content: '❤';
+    font-size: 1.5rem;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ff6b6b;
+    text-shadow: 0 0 10px rgba(255, 107, 107, 0.6);
+    animation: heartbeat 1.5s infinite alternate;
+}
+
+.relationship-confirmation h3::before {
+    left: -15px;
+}
+
+.relationship-confirmation h3::after {
+    right: -15px;
+}
+
+@keyframes heartbeat {
+    0% { transform: translateY(-50%) scale(1); }
+    100% { transform: translateY(-50%) scale(1.3); }
+}
+
+.relationship-confirmation p {
+    margin-bottom: 25px;
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 1.2rem;
+    line-height: 1.7;
+    font-weight: 400;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 2;
+    padding: 0 10px;
+    letter-spacing: 0.5px;
+}
+
+.relationship-confirmation p::first-letter {
+    font-size: 1.5em;
+    font-weight: 600;
+    color: #ff6b6b;
+    text-shadow: 0 0 5px rgba(255, 107, 107, 0.6);
+}
+
+.confirmation-button-container {
+    position: relative;
+    margin: 35px auto 25px;
+    width: 220px;
+    height: 60px;
+    min-height: 180px;
+    z-index: 5;
+}
+
+.confirmation-button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 55px;
+    background: linear-gradient(45deg, #ff6b6b, #ff8e8e, #ff6b6b);
+    background-size: 200% 200%;
+    border: none;
+    border-radius: 30px;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    transform-origin: center center;
+    letter-spacing: 1px;
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4), 0 0 20px rgba(255, 107, 107, 0.2);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    animation: buttonGlow 3s infinite alternate, buttonGradient 5s infinite;
+}
+
+@keyframes buttonGlow {
+    0% { box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4), 0 0 20px rgba(255, 107, 107, 0.2); }
+    100% { box-shadow: 0 5px 15px rgba(255, 107, 107, 0.6), 0 0 30px rgba(255, 107, 107, 0.4), 0 0 50px rgba(255, 107, 107, 0.2); }
+}
+
+@keyframes buttonGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.confirmation-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 107, 107, 0.6);
+}
+
+.confirmation-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: all 0.6s ease;
+}
+
+.confirmation-button:hover::before {
+    left: 100%;
+}
+
+.confirmation-button.running-away {
+    animation: button-escape 0.6s ease;
+}
+
+@keyframes button-escape {
+    0% { transform: translateX(0) translateY(0) scale(1); }
+    20% { transform: translateX(-15px) translateY(-8px) scale(1.05); }
+    40% { transform: translateX(12px) translateY(5px) scale(0.95); }
+    60% { transform: translateX(-10px) translateY(-5px) scale(1.02); }
+    80% { transform: translateX(8px) translateY(3px) scale(0.98); }
+    100% { transform: translateX(0) translateY(0) scale(1); }
+}
+
+.confirmation-message {
+    display: none;
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    color: white;
+    font-weight: 500;
+    animation: fadeIn 0.8s, messagePulse 2s infinite alternate;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1), 0 0 20px rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    position: relative;
+    overflow: hidden;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes messagePulse {
+    0% { box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1), 0 0 20px rgba(255, 255, 255, 0.2); }
+    100% { box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1), 0 0 30px rgba(255, 255, 255, 0.4); }
+}
+
+.confirmation-message::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transform: rotate(45deg);
+    animation: messageShine 3s infinite;
+}
+
+@keyframes messageShine {
+    0% { left: -50%; }
+    100% { left: 150%; }
+}
+
+.heart-explosion {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    display: none;
+    overflow: hidden;
+}
+
+.flying-heart {
+    position: absolute;
+    font-size: 20px;
+    color: #ff6b6b;
+    animation: flyHeart 2.5s forwards;
+    opacity: 0;
+    will-change: transform, opacity;
+    filter: drop-shadow(0 0 5px rgba(255, 107, 107, 0.6));
+    z-index: 100;
+}
+
+.flying-heart:nth-child(3n) {
+    animation: flyHeart 3s forwards, heartPulse 0.5s infinite alternate;
+}
+
+.flying-heart:nth-child(3n+1) {
+    animation: flyHeart 2.5s forwards, heartRotate 1s infinite linear;
+}
+
+.flying-heart:nth-child(3n+2) {
+    animation: flyHeart 2.8s forwards, heartBounce 0.8s infinite alternate;
+}
+
+@keyframes heartPulse {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.3); }
+}
+
+@keyframes heartRotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes heartBounce {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-10px); }
+}
+
+@keyframes flyHeart {
+    0% {
+        transform: scale(0) rotate(0deg) translate(0, 0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1.5) rotate(360deg) translate(var(--tx), var(--ty));
+        opacity: 0;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.relationship-status {
+    display: none;
+    margin-top: 30px;
+    padding: 25px;
+    background: linear-gradient(45deg, rgba(132, 250, 176, 0.8), rgba(143, 211, 244, 0.8), rgba(147, 88, 247, 0.7));
+    background-size: 300% 300%;
+    border-radius: 20px;
+    color: white;
+    text-align: center;
+    animation: fadeIn 1.2s, statusGradient 10s infinite;
+    box-shadow: 0 8px 20px rgba(132, 250, 176, 0.4), 0 0 30px rgba(143, 211, 244, 0.3);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+@keyframes statusGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.relationship-status::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 60%);
+    opacity: 0.5;
+    animation: waterEffect 15s infinite linear;
+}
+
+@keyframes waterEffect {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.relationship-status h3 {
+    color: white;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.relationship-status p {
+    color: white;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.relationship-status #days-together {
+    font-weight: 800;
+    font-size: 2rem;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.3);
+    display: inline-block;
+    padding: 5px 15px;
+    margin: 5px 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    border: 2px dashed rgba(255, 255, 255, 0.5);
+    position: relative;
+    animation: daysPulse 2s infinite alternate;
+}
+
+@keyframes daysPulse {
+    0% { transform: scale(1); box-shadow: 0 0 10px rgba(255, 255, 255, 0.2); }
+    100% { transform: scale(1.05); box-shadow: 0 0 20px rgba(255, 255, 255, 0.4); }
+}
+
+.relationship-status #days-together::before,
+.relationship-status #days-together::after {
+    content: '\2728'; /* 星星符号 */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+}
+
+.relationship-status #days-together::before {
+    left: -25px;
+    animation: starTwinkle 1.5s infinite alternate;
+}
+
+.relationship-status #days-together::after {
+    right: -25px;
+    animation: starTwinkle 1.5s infinite alternate-reverse;
+}
+
+@keyframes starTwinkle {
+    0% { opacity: 0.5; transform: translateY(-50%) rotate(0deg) scale(1); }
+    100% { opacity: 1; transform: translateY(-50%) rotate(15deg) scale(1.2); }
+}
+
+/* Mobile optimization */
+@media (max-width: 768px) {
+    .relationship-confirmation {
+        padding: 15px;
+        margin: 20px 10px;
+    }
+    
+    .confirmation-button-container {
+        width: 180px;
+        height: 50px;
+    }
+    
+    .confirmation-button {
+        font-size: 1rem;
+    }
+}

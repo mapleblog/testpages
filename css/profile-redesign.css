@@ -1,8 +1,9 @@
 /* 个人资料卡片重新设计 */
 .profile-canvas {
-    width: 120%; /* u589eu52a0u5bbdu5ea6 */
-    max-width: 320px; /* u8bbeu7f6eu6700u5927u5bbdu5ea6 */
-    margin-left: -10%; /* u8c03u6574u5de6u8fb9u8dddu4f7fu5176u5c45u4e2d */
+    width: 100%; /* 使用与头像相同的宽度 */
+    max-width: 320px; /* 设置最大宽度 */
+    margin-left: auto; /* 自动边距实现居中 */
+    margin-right: auto; /* 自动边距实现居中 */
     background: linear-gradient(135deg, rgba(0, 51, 102, 0.6), rgba(0, 77, 153, 0.4));
     border-radius: 16px;
     padding: 20px;
@@ -212,7 +213,10 @@
     .profile-canvas {
         padding: 15px;
         max-width: 280px;
-        margin: 15px auto 0;
+        width: 100%; /* 手机端使用100%宽度 */
+        margin-top: 15px;
+        margin-left: auto; /* 自动边距实现居中 */
+        margin-right: auto; /* 自动边距实现居中 */
     }
     
     .info-icon {

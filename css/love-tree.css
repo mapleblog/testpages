@@ -1,0 +1,179 @@
+/* 爱心树动画样式 */
+.love-heart-section {
+    margin: 50px auto; /* 增加上下边距 */
+    text-align: center;
+    position: relative;
+    width: 100%;
+    max-width: 670px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 30px 20px; /* 增加上下内边距 */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    display: flex; /* 使用弹性盒子模型 */
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+}
+
+#loveHeart {
+    width: 100%;
+    height: 420px; /* 增加高度，给爱心更多空间 */
+    position: relative;
+    margin: 0 auto;
+    overflow: hidden; /* 防止内容溢出 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 600px; /* 限制最大宽度，保持爱心比例 */
+}
+
+#garden {
+    width: 100%;
+    height: 100%;
+    display: block;
+    margin: 0 auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0; /* 添加right属性以确保水平居中 */
+    bottom: 0; /* 添加bottom属性以确保垂直居中 */
+    margin: auto; /* 使用margin: auto实现完美居中 */
+    max-width: 100%; /* 确保不超过容器宽度 */
+    max-height: 100%; /* 确保不超过容器高度 */
+}
+
+#words {
+    position: absolute;
+    width: 100%;
+    bottom: 20%;
+    left: 0;
+    color: #ffffff;
+    text-align: center;
+    font-weight: bold;
+    z-index: 3;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+}
+
+/* 爱心中间的文字样式 - 上下排版 */
+#heartName {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    font-family: 'Great Vibes', cursive;
+    font-size: 28px;
+    text-align: center;
+    color: #fff;
+    opacity: 0;
+    transition: opacity 2s ease-in;
+    display: flex; /* 使用弹性盒子模型 */
+    flex-direction: column; /* 垂直排列 */
+    justify-content: center; /* 垂直居中 */
+    align-items: center; /* 水平居中 */
+    /* 移除之前的transform，使用更精确的定位 */
+    padding-bottom: 15px; /* 微调垂直位置，使文字在视觉上居中 */
+}
+
+/* 每行名字的样式 */
+.name-line {
+    display: block;
+    width: 100%;
+    text-align: center;
+    line-height: 1.2;
+    padding: 0;
+}
+
+/* 第一行名字 */
+.name-line:nth-child(1) {
+    font-size: 28px;
+    margin-bottom: 3px;
+}
+
+/* 中间的连接符 */
+.name-line:nth-child(2) {
+    font-size: 24px;
+    margin: 1px 0;
+}
+
+/* 第二行名字 */
+.name-line:nth-child(3) {
+    font-size: 28px;
+    margin-top: 3px;
+}
+
+/* 手机端字体大小调整 */
+@media (max-width: 768px) {
+    #heartName {
+        font-size: 20px; /* 降低基础字体大小 */
+    }
+    
+    .name-line:nth-child(1) {
+        font-size: 20px; /* 第一行名字字体缩小 */
+    }
+    
+    .name-line:nth-child(2) {
+        font-size: 18px; /* 中间连接符字体缩小 */
+    }
+    
+    .name-line:nth-child(3) {
+        font-size: 20px; /* 第二行名字字体缩小 */
+    }
+}
+
+#messages {
+    display: none;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}
+
+#elapseClock {
+    font-size: 18px;
+    margin: 10px 0;
+    color: #ffffff;
+    text-shadow: 0 0 5px rgba(255, 105, 180, 0.7);
+}
+
+#loveu {
+    padding: 15px;
+    font-size: 22px;
+    margin-top: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    color: #ffffff;
+    text-shadow: 0 0 5px rgba(255, 105, 180, 0.7);
+    display: none;
+}
+
+.signature {
+    margin-top: 10px;
+    font-size: 16px;
+    font-style: italic;
+    color: #ffffff;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .love-heart-section {
+        padding: 15px;
+    }
+    
+    #loveHeart {
+        height: 300px;
+    }
+    
+    #elapseClock {
+        font-size: 16px;
+    }
+    
+    #loveu {
+        font-size: 18px;
+        padding: 10px;
+    }
+    
+    .signature {
+        font-size: 14px;
+    }
+}

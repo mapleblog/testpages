@@ -1,0 +1,132 @@
+/* 爱心特效样式 */
+.love-heart-section {
+    position: relative;
+    overflow: hidden;
+}
+
+/* 光晕效果 */
+.heart-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 2s ease-in;
+    background: radial-gradient(
+        circle at center,
+        rgba(255, 182, 193, 0.2) 0%,
+        rgba(255, 105, 180, 0.1) 30%,
+        rgba(255, 20, 147, 0) 70%
+    );
+}
+
+/* 心跳脉动效果 */
+.heart-pulse {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle at center,
+        rgba(255, 105, 180, 0.3) 0%,
+        rgba(255, 20, 147, 0) 70%
+    );
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0;
+}
+
+/* 心跳动画 */
+@keyframes heartbeat {
+    0% {
+        transform: translate(-50%, -50%) scale(0.8);
+        opacity: 0.5;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.2;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(0.8);
+        opacity: 0.5;
+    }
+}
+
+/* 漂浮爱心粒子 */
+.floating-heart {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-image: url('../img/mini-heart.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0;
+    animation-name: float-heart;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+
+/* 漂浮动画 */
+@keyframes float-heart {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.8;
+    }
+    90% {
+        opacity: 0.2;
+    }
+    100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* 闪烁光点 */
+.sparkle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #fff;
+    box-shadow: 0 0 4px #fff, 0 0 8px #ff69b4;
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0;
+    animation-name: sparkle;
+    animation-timing-function: ease-out;
+    animation-iteration-count: 1;
+}
+
+/* 闪烁动画 */
+@keyframes sparkle {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    .heart-glow {
+        opacity: 0.5; /* 在移动端增强光晕效果 */
+    }
+}
