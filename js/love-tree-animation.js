@@ -19,9 +19,19 @@ jq(function() {
     // 将Y偏移量向上移动，留出更多空间给心形底部
     var offsetY = canvasHeight * 0.4; // 将中心点设置在画布高度的40%处
     
+    // 对于移动设备，调整心形的垂直位置使其更加居中
+    if (window.innerWidth <= 480) {
+        offsetY = canvasHeight * 0.45; // 在移动设备上将心形垂直位置调整到画布高度的45%处
+    }
+    
     // 计算缩放比例，确保心形完全适应画布
-    // 减小缩放比例，使心形更小一些，确保完全显示
-    var heartScale = Math.min(canvasWidth, canvasHeight) / 600;
+    // 进一步减小缩放比例，确保在移动设备上不会触碰画布边缘
+    var heartScale = Math.min(canvasWidth, canvasHeight) / 650;
+    
+    // 对于移动设备进一步减小心形大小
+    if (window.innerWidth <= 480) {
+        heartScale = Math.min(canvasWidth, canvasHeight) / 750;
+    }
     
     // 获取画布元素
     var $garden = jq("#garden");
@@ -78,10 +88,21 @@ jq(function() {
     // 获取心形坐标点
     function getHeartPoint(angle) {
         var t = angle / Math.PI;
-        // 使用心形曲线公式计算坐标
-        var x = 19.5 * (16 * Math.pow(Math.sin(t), 3));
+        
+        // 调整心形曲线公式的参数，使心形更窄一些
+        var horizontalCompression = 0.85; // 水平方向压缩因子，小于1使心形更窄
+        
+        // 使用心形曲线公式计算坐标，并应用水平压缩
+        var x = 19.5 * (16 * Math.pow(Math.sin(t), 3)) * horizontalCompression;
+        
         // 调整心形的纵向比例，使心形稍微扁平一点
         var y = -20 * (13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t)) * 0.9;
+        
+        // 对于移动设备，进一步调整心形大小
+        if (window.innerWidth <= 480) {
+            x = x * 0.95; // 移动设备上再压缩一点水平宽度
+        }
+        
         // 应用缩放比例和偏移量
         return new Array(offsetX + x * heartScale, offsetY + y * heartScale);
     }
