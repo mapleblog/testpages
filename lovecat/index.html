@@ -1,0 +1,447 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas抱着爱心的小猫代码</title>
+
+    <style>
+        body {
+            text-align: center;
+        }
+
+        .wrapper {
+            height: 500px;
+        }
+
+        canvas {
+            margin-top: 20px;
+            transform: scale(0.5);
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="wrapper">
+        <canvas width="600" height="554" id="canvas"></canvas>
+    </div>
+    <script>
+        var canvas = document.getElementById('canvas');
+        if (canvas.getContext("2d")) {
+            var c = canvas.getContext("2d");
+
+            c.strokeStyle = "#33190c";
+            c.fillStyle = "#ffffd9";
+            c.lineWidth = 6;
+            c.beginPath();
+            c.moveTo(433, 458);
+            c.lineTo(477, 438);
+            c.bezierCurveTo(492, 433, 496, 453, 484, 463);
+            c.lineTo(433, 494);
+            c.fill();
+            c.stroke();
+
+            c.beginPath();
+            c.moveTo(255, 392);
+            c.lineTo(255, 526);
+            c.bezierCurveTo(256, 555, 282, 557, 293, 530);
+            c.lineTo(383, 530);
+            c.bezierCurveTo(392, 557, 419, 558, 428, 526);
+            c.quadraticCurveTo(434, 523, 430, 393);
+            c.closePath();
+            c.fill();
+            c.stroke();
+
+            c.fillStyle = "#fff";
+            c.beginPath();
+            c.moveTo(317, 501);
+            c.quadraticCurveTo(345, 504, 363, 500);
+            c.quadraticCurveTo(386, 492, 389, 480);
+            c.quadraticCurveTo(393, 469, 396, 437);
+            c.closePath();
+            c.fill();
+
+            c.fillStyle = "#e5f8ef";
+            c.beginPath();
+            c.moveTo(428, 459);
+            c.bezierCurveTo(407, 456, 405, 479, 421, 482);
+            c.bezierCurveTo(393, 482, 394, 507, 427, 511);
+            c.quadraticCurveTo(429, 485, 428, 459);
+            c.closePath();
+            c.fill();
+
+            c.strokeStyle = "#33190c";
+            c.fillStyle = "#ffffd9";
+            c.lineWidth = 4;
+            c.beginPath();
+            c.moveTo(106, 79);
+            c.quadraticCurveTo(114, 4, 209, 14);
+            c.fill();
+            c.stroke();
+
+            c.beginPath();
+            c.lineWidth = 5;
+            c.moveTo(376, 14);
+            c.quadraticCurveTo(431, 13, 446, 15);
+            c.quadraticCurveTo(488, 20, 498, 48);
+            c.quadraticCurveTo(508, 75, 512, 110);
+            c.fill();
+            c.stroke();
+
+
+            c.beginPath();
+            c.lineWidth = 8;
+            c.moveTo(470, 65);
+            c.lineTo(483, 27);
+            c.stroke();
+
+
+            c.beginPath();
+            c.fillStyle = "#fecce5";
+            c.moveTo(473, 65);
+            c.lineTo(483, 30);
+            c.bezierCurveTo(502, 46, 496, 60, 512, 110);
+            c.closePath();
+            c.fill();
+
+
+
+            c.lineWidth = 10;
+            c.beginPath();
+            c.strokeStyle = "#33190c";
+            c.fillStyle = "#ffffd9";
+            c.moveTo(280, 6);
+            c.bezierCurveTo(476, 0, 535, 154, 541, 166);
+            c.lineTo(546, 180);
+            c.bezierCurveTo(584, 304, 530, 368, 432, 392);
+            c.quadraticCurveTo(210, 460, 90, 372);
+            c.quadraticCurveTo(38, 324, 34, 314);
+            c.quadraticCurveTo(1, 268, 38, 174);
+            c.quadraticCurveTo(128, 8, 280, 6);
+            c.closePath();
+            c.fill();
+            c.stroke();
+
+
+
+            c.fillStyle = "#fff";
+            c.beginPath();
+            c.moveTo(29, 294);
+            c.quadraticCurveTo(57, 339, 99, 371);
+            c.quadraticCurveTo(272, 404, 427, 390);
+            c.bezierCurveTo(500, 371, 567, 330, 549, 216);
+            c.bezierCurveTo(560, 298, 518, 360, 427, 378);
+            c.quadraticCurveTo(272, 404, 99, 364);
+            c.quadraticCurveTo(55, 334, 29, 294);
+            c.closePath();
+            c.fill();
+
+
+
+            c.strokeStyle = "#33190c";
+            c.lineWidth = 7;
+            c.beginPath();
+            c.moveTo(6, 212);
+            c.lineTo(23, 212);
+            c.stroke();
+            c.moveTo(7, 211);
+            c.quadraticCurveTo(5, 212, 7, 213);
+            c.stroke();
+
+
+            c.beginPath();
+            c.moveTo(2, 246);
+            c.lineTo(15, 246);
+            c.stroke();
+            c.moveTo(6, 245);
+            c.quadraticCurveTo(1, 246, 6, 247);
+            c.stroke();
+
+
+            c.beginPath();
+            c.moveTo(6, 284);
+            c.lineTo(17, 281);
+            c.stroke();
+            c.moveTo(9, 282);
+            c.quadraticCurveTo(4, 287, 6, 282);
+            c.stroke();
+
+            c.lineWidth = 6;
+            c.beginPath();
+            c.moveTo(529, 233);
+            c.lineTo(596, 246);
+            c.stroke();
+            c.moveTo(530, 233);
+            c.quadraticCurveTo(528, 233, 530, 234);
+            c.stroke();
+            c.moveTo(596, 246);
+            c.quadraticCurveTo(597, 246, 596, 246);
+            c.stroke();
+
+
+            c.beginPath();
+            c.moveTo(525, 263);
+            c.lineTo(587, 290);
+            c.stroke();
+            c.moveTo(526, 263);
+            c.quadraticCurveTo(524, 263, 527, 264);
+            c.stroke();
+            c.moveTo(587, 290);
+            c.quadraticCurveTo(589, 291, 587, 290);
+            c.stroke();
+
+
+            c.beginPath();
+            c.moveTo(523, 296);
+            c.lineTo(581, 331);
+            c.stroke();
+            c.moveTo(524, 298);
+            c.quadraticCurveTo(522, 294, 524, 297);
+            c.stroke();
+            c.moveTo(581, 331);
+            c.quadraticCurveTo(583, 332, 581, 331);
+            c.stroke();
+
+
+
+            c.lineWidth = 5;
+            c.beginPath();
+            c.moveTo(163, 40);
+            c.lineTo(182, 42);
+            c.moveTo(182, 42);
+            c.quadraticCurveTo(185, 42, 180, 42);
+            c.stroke();
+
+            c.beginPath();
+            c.moveTo(374, 54);
+            c.quadraticCurveTo(386, 43, 396, 57);
+            c.moveTo(375, 54);
+            c.quadraticCurveTo(372, 56, 376, 53);
+            c.moveTo(395, 56);
+            c.quadraticCurveTo(397, 58, 395, 56);
+            c.stroke();
+
+
+
+            c.fillStyle = "#e5f8ef";
+            c.beginPath();
+            c.moveTo(190, 30);
+            c.bezierCurveTo(180, 57, 216, 65, 218, 20);
+            c.quadraticCurveTo(203, 23, 190, 30);
+            c.closePath();
+            c.fill();
+            c.beginPath();
+            c.moveTo(239, 15);
+            c.bezierCurveTo(233, 70, 280, 60, 278, 11);
+            c.quadraticCurveTo(257, 11, 239, 15);
+            c.closePath();
+            c.fill();
+            c.beginPath();
+            c.moveTo(304, 11);
+            c.bezierCurveTo(285, 48, 329, 74, 339, 15);
+            c.quadraticCurveTo(322, 11, 304, 11);
+            c.closePath();
+            c.fill();
+            c.beginPath();
+            c.moveTo(365, 20);
+            c.bezierCurveTo(354, 47, 380, 53, 389, 28);
+            c.quadraticCurveTo(378, 23, 366, 20);
+            c.closePath();
+            c.fill();
+
+
+
+            c.fillStyle = "#ffcce6";
+            c.beginPath();
+            c.moveTo(110, 199);
+            c.quadraticCurveTo(73, 179, 47, 198);
+            c.bezierCurveTo(41, 204, 43, 211, 47, 215);
+            c.quadraticCurveTo(73, 235, 120, 212);
+            c.closePath();
+            c.fill();
+
+            c.beginPath();
+            c.moveTo(428, 200);
+            c.quadraticCurveTo(470, 186, 507, 210);
+            c.bezierCurveTo(519, 218, 514, 240, 497, 244);
+            c.quadraticCurveTo(454, 256, 420, 227);
+            c.closePath();
+            c.fill();
+
+            c.strokeStyle = "#361909";
+            c.lineWidth = 6;
+            c.beginPath();
+            c.moveTo(71, 205);
+            c.lineTo(65, 212);
+            c.moveTo(71, 205);
+            c.bezierCurveTo(75, 200, 74, 202, 71, 205);
+            c.moveTo(66, 211);
+            c.bezierCurveTo(63, 213, 62, 217, 66, 210);
+            c.moveTo(88, 205);
+            c.lineTo(82, 212);
+            c.moveTo(88, 205);
+            c.bezierCurveTo(90, 202, 91, 202, 88, 205);
+            c.moveTo(82, 212);
+            c.bezierCurveTo(80, 215, 78, 216, 82, 212);
+            c.stroke();
+
+            c.beginPath();
+            c.moveTo(448, 218);
+            c.lineTo(443, 224);
+            c.moveTo(448, 218);
+            c.bezierCurveTo(452, 213, 454, 215, 444, 224);
+            c.moveTo(443, 224);
+            c.bezierCurveTo(441, 225, 439, 230, 444, 224);
+            c.moveTo(466, 218);
+            c.lineTo(460, 225);
+            c.moveTo(466, 219)
+            c.bezierCurveTo(468, 215, 469, 216, 465, 219);
+            c.moveTo(460, 225);
+            c.bezierCurveTo(455, 230, 455, 231, 460, 225);
+            c.moveTo(482, 220);
+            c.lineTo(475, 228);
+            c.moveTo(482, 221);
+            c.bezierCurveTo(484, 216, 484, 219, 481, 221);
+            c.moveTo(476, 227);
+            c.bezierCurveTo(472, 231, 472, 231, 476, 227);
+            c.stroke();
+
+
+
+            c.fillStyle = "#35190d";
+            c.beginPath();
+            c.moveTo(129, 140);
+            c.bezierCurveTo(206, 118, 215, 204, 172, 226);
+            c.bezierCurveTo(92, 249, 85, 165, 129, 140);
+            c.closePath();
+            c.fill();
+
+            c.beginPath();
+            c.moveTo(332, 154);
+            c.bezierCurveTo(421, 108, 462, 208, 407, 240);
+            c.bezierCurveTo(357, 279, 264, 214, 332, 154);
+            c.closePath();
+            c.fill();
+
+
+
+            c.strokeStyle = "#35190d";
+            c.lineWidth = 6;
+            c.beginPath();
+            c.moveTo(129, 146);
+            c.lineTo(129, 131);
+            c.stroke();
+
+            c.beginPath();
+            c.moveTo(334, 156);
+            c.lineTo(328, 146);
+            c.stroke();
+
+
+
+            c.fillStyle = "#fff";
+            c.beginPath();
+            c.moveTo(177, 151);
+            c.bezierCurveTo(190, 152, 183, 166, 177, 164);
+            c.bezierCurveTo(168, 164, 168, 152, 177, 151);
+            c.closePath();
+            c.fill();
+
+            c.beginPath();
+            c.moveTo(393, 154);
+            c.bezierCurveTo(406, 155, 402, 171, 393, 169);
+            c.bezierCurveTo(384, 169, 382, 155, 393, 154);
+            c.closePath();
+            c.fill();
+
+
+
+            c.fillStyle = "#35190e";
+            c.beginPath();
+            c.moveTo(237, 220);
+            c.bezierCurveTo(237, 209, 254, 209, 254, 220);
+            c.bezierCurveTo(254, 231, 238, 231, 237, 220);
+            c.closePath();
+            c.fill();
+
+
+            c.strokeStyle = "#35190e";
+            c.lineWidth = 4;
+            c.beginPath();
+            c.moveTo(218, 229);
+            c.bezierCurveTo(222, 241, 239, 243, 245, 226);
+            c.moveTo(219, 230);
+            c.bezierCurveTo(217, 228, 218, 228, 219, 230);
+            c.moveTo(245, 226);
+            c.bezierCurveTo(254, 245, 279, 244, 285, 234);
+            c.moveTo(285, 234);
+            c.bezierCurveTo(286, 232, 287, 232, 285, 234);
+            c.stroke(); c
+
+            c.strokeStyle = "#33190c";
+            c.fillStyle = "#fe0000";
+            c.lineWidth = 10;
+            c.beginPath();
+            c.moveTo(98, 376);
+            c.bezierCurveTo(70, 301, 156, 194, 246, 303);
+            c.bezierCurveTo(403, 197, 476, 345, 424, 402);
+            c.quadraticCurveTo(375, 475, 260, 528);
+            c.quadraticCurveTo(247, 536, 225, 526);
+            c.quadraticCurveTo(130, 463, 98, 376);
+            c.closePath();
+            c.fill();
+            c.stroke();
+
+            c.fillStyle = "#ff334c";
+            c.beginPath();
+            c.moveTo(109, 372);
+            c.bezierCurveTo(68, 240, 214, 226, 236, 326);
+            c.quadraticCurveTo(297, 250, 384, 278);
+            c.quadraticCurveTo(408, 288, 404, 316);
+            c.quadraticCurveTo(380, 416, 263, 469);
+            c.bezierCurveTo(241, 480, 220, 470, 202, 464);
+            c.quadraticCurveTo(118, 416, 109, 372);
+            c.closePath();
+            c.fill();
+            //�׵�cc.fillStyle="#fff";
+            c.beginPath();
+            c.moveTo(129, 273);
+            c.quadraticCurveTo(142, 260, 155, 273);
+            c.bezierCurveTo(151, 286, 125, 278, 129, 273);
+            c.closePath();
+            c.fill();
+            c.beginPath();
+            c.moveTo(292, 293);
+            c.bezierCurveTo(296, 283, 333, 271, 351, 278);
+            c.bezierCurveTo(350, 292, 300, 302, 292, 293);
+            c.closePath();
+            c.fill();
+
+
+
+            c.strokeStyle = "#33190c";
+            c.fillStyle = "#fff";
+            c.lineWidth = 6;
+            c.beginPath();
+            c.moveTo(98, 377);
+            c.bezierCurveTo(137, 367, 128, 417, 113, 415);
+            c.bezierCurveTo(97, 418, 74, 390, 98, 377);
+            c.closePath();
+            c.fill();
+            c.stroke();
+
+            c.beginPath();
+            c.moveTo(390, 434);
+            c.bezierCurveTo(358, 407, 392, 366, 427, 388);
+            c.quadraticCurveTo(416, 409, 393, 435);
+            c.closePath();
+            c.fill();
+            c.stroke();
+
+        }
+    </script>
+
+</body>
+</html>
+<!--下面是无用代码-->
+<a href="http://www.bootstrapmb.com" style="display:none">bootstrapmb</a>

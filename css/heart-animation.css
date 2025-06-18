@@ -1,0 +1,164 @@
+/* 爱心动画样式 */
+.love-section {
+    text-align: center;
+    margin: 30px 0;
+    position: relative;
+}
+
+.love-container {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.love-title {
+    font-size: 28px;
+    color: #fff;
+    margin-bottom: 20px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    font-weight: 700;
+}
+
+.love-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 爱心计时器样式 */
+.elapse-clock {
+    font-size: 24px;
+    color: #fff;
+    margin: 15px 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.elapse-clock .digit {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 5px 10px;
+    border-radius: 8px;
+    margin: 0 3px;
+    font-weight: bold;
+    color: #ff6b8b;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    min-width: 40px;
+    text-align: center;
+}
+
+/* 爱心花园样式 */
+#garden-love {
+    width: 100%;
+    height: 200px;
+    position: relative;
+    margin: 20px 0;
+}
+
+#garden-love canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* 爱心日期样式 */
+.love-date {
+    font-size: 18px;
+    color: #fff;
+    margin-top: 15px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.love-date span {
+    color: #ff6b8b;
+    font-weight: bold;
+}
+
+/* 爱心装饰 */
+.heart-decoration {
+    position: absolute;
+    font-size: 24px;
+    color: rgba(255, 105, 180, 0.6);
+    animation: float 6s ease-in-out infinite;
+}
+
+.heart-decoration:nth-child(odd) {
+    animation-duration: 8s;
+}
+
+.heart-decoration:nth-child(even) {
+    animation-duration: 7s;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.6;
+    }
+    50% {
+        transform: translateY(-15px) rotate(10deg);
+        opacity: 0.9;
+    }
+}
+
+/* 响应式样式 */
+@media (max-width: 768px) {
+    .love-title {
+        font-size: 24px;
+    }
+    
+    .elapse-clock {
+        font-size: 20px;
+    }
+    
+    .elapse-clock .digit {
+        padding: 4px 8px;
+        min-width: 32px;
+    }
+    
+    #garden-love {
+        height: 180px;
+    }
+    
+    .love-date {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .love-container {
+        padding: 15px;
+    }
+    
+    .love-title {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+    
+    .elapse-clock {
+        font-size: 16px;
+    }
+    
+    .elapse-clock .digit {
+        padding: 3px 6px;
+        min-width: 28px;
+        margin: 0 2px;
+    }
+    
+    #garden-love {
+        height: 150px;
+    }
+    
+    .love-date {
+        font-size: 14px;
+    }
+}

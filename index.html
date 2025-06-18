@@ -38,6 +38,8 @@
     <link rel="stylesheet" href="css/love-tree.css">
     <link rel="stylesheet" href="css/stars-background.css">
     <link rel="stylesheet" href="css/heart-effects.css">
+    <link rel="stylesheet" href="css/lovecat.css">
+    <link rel="stylesheet" href="css/feature-tabs-custom.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
     <!-- 添加拉丁风格字体 -->
@@ -195,12 +197,16 @@
             </div>
         </section>
         
+        
         <!-- 功能区域 -->
         <section class="features-section">
             <div class="feature-tabs">
-                <div class="feature-tab active" data-target="message-board-content">留言板</div>
-                <div class="feature-tab" data-target="mood-diary-content">心情日记</div>
-                <div class="feature-tab" data-target="wishlist-content">愿望清单</div>
+                <div class="feature-tabs-container">
+                    <div class="feature-tab active" data-target="message-board-content">留言板</div>
+                    <div class="feature-tab" data-target="mood-diary-content">心情日记</div>
+                    <div class="feature-tab" data-target="wishlist-content">愿望清单</div>
+                </div>
+                <canvas width="600" height="554" id="lovecatCanvas"></canvas>
             </div>
             
             <!-- 留言板区域 -->
@@ -374,6 +380,7 @@
     <script src="js/love-tree-animation.js"></script>
     <script src="js/stars-background.js"></script>
     <script src="js/heart-effects.js"></script>
+    <script src="js/lovecat.js"></script>
     
     <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>

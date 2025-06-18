@@ -1,0 +1,377 @@
+/* 爱心表白页面样式 */
+.love-declaration {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    padding: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 六边形导航样式 */
+.hexagon-nav {
+    position: relative;
+    width: 450px;
+    height: 450px;
+    margin: 0 auto 30px;
+}
+
+.hexagon {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background-color: rgba(255, 255, 255, 0.2);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    backdrop-filter: blur(5px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.hexagon:hover {
+    transform: scale(1.1);
+    background-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.hexagon.center {
+    top: 150px;
+    left: 150px;
+    width: 150px;
+    height: 150px;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    z-index: 10;
+}
+
+.hexagon.nav1 {
+    top: 0;
+    left: 150px;
+}
+
+.hexagon.nav2 {
+    top: 75px;
+    left: 20px;
+}
+
+.hexagon.nav3 {
+    top: 225px;
+    left: 20px;
+}
+
+.hexagon.nav4 {
+    top: 300px;
+    left: 150px;
+}
+
+.hexagon.nav5 {
+    top: 225px;
+    left: 280px;
+}
+
+.hexagon.nav6 {
+    top: 75px;
+    left: 280px;
+}
+
+.hexagon i {
+    font-size: 2rem;
+    color: white;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.hexagon.center i {
+    font-size: 3rem;
+}
+
+/* 内容页面样式 */
+.love-content {
+    position: relative;
+    width: 90%;
+    max-width: 800px;
+    min-height: 400px;
+    background-color: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 30px;
+    margin: 20px auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    display: none;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.love-content.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 返回按钮 */
+.back-button {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.back-button:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    transform: scale(1.1);
+}
+
+/* 爱心沙漏样式 */
+.love-hourglass {
+    text-align: center;
+    padding: 20px;
+}
+
+.love-hourglass h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: white;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.elapse-clock {
+    font-size: 1.8rem;
+    margin: 20px 0;
+    color: white;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    font-weight: bold;
+}
+
+.love-date {
+    font-size: 1.2rem;
+    margin-top: 20px;
+    color: white;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* 爱心动画区域 */
+#garden {
+    width: 100%;
+    height: 300px;
+    position: relative;
+}
+
+/* 照片展示区域 */
+.love-photos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin: 20px 0;
+}
+
+.love-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.love-photo:hover {
+    transform: scale(1.1);
+    border-color: rgba(255, 255, 255, 0.8);
+}
+
+.love-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 心形连接 */
+.heart-connection {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.heart-connection i {
+    font-size: 2rem;
+    color: #ff6b8b;
+    animation: pulse 1.5s infinite;
+}
+
+/* 留言板样式 */
+.love-message-board {
+    margin-top: 30px;
+}
+
+.love-message-board h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: white;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.message-form {
+    margin-bottom: 20px;
+}
+
+.message-form textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    resize: none;
+    margin-bottom: 10px;
+}
+
+.message-form button {
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.message-form button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+}
+
+.messages-display {
+    max-height: 300px;
+    overflow-y: auto;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.message-item {
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    border-left: 3px solid #ff6b8b;
+}
+
+.message-date {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 5px;
+}
+
+.message-text {
+    color: white;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .hexagon-nav {
+        width: 300px;
+        height: 300px;
+        transform: scale(0.7);
+    }
+    
+    .hexagon.center {
+        top: 100px;
+        left: 100px;
+    }
+    
+    .hexagon.nav1 {
+        top: 0;
+        left: 100px;
+    }
+    
+    .hexagon.nav2 {
+        top: 50px;
+        left: 13px;
+    }
+    
+    .hexagon.nav3 {
+        top: 150px;
+        left: 13px;
+    }
+    
+    .hexagon.nav4 {
+        top: 200px;
+        left: 100px;
+    }
+    
+    .hexagon.nav5 {
+        top: 150px;
+        left: 187px;
+    }
+    
+    .hexagon.nav6 {
+        top: 50px;
+        left: 187px;
+    }
+    
+    .love-photos {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .elapse-clock {
+        font-size: 1.4rem;
+    }
+}
+
+/* 动画效果 */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+/* 爱心粒子效果 */
+.heart-particle {
+    position: absolute;
+    background-color: #ff6b8b;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: float 5s ease-in infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.8;
+    }
+    50% {
+        transform: translateY(-100px) rotate(180deg);
+        opacity: 0.4;
+    }
+    100% {
+        transform: translateY(-200px) rotate(360deg);
+        opacity: 0;
+    }
+}

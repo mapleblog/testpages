@@ -1,19 +1,19 @@
 /**
- * u8868u60c5u53cdu5e94u529fu80fdu6a21u5757
+ * 表情反应功能模块
  */
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('u521du59cbu5316u8868u60c5u53cdu5e94u529fu80fd');
+    console.log('初始化表情反应功能');
     
-    // u8868u60c5u53cdu5e94u914du7f6e
+    // 表情反应配置
     const reactionTypes = {
-        'like': { icon: 'fa-thumbs-up', label: 'u8d5e' },
-        'love': { icon: 'fa-heart', label: 'u7231' },
-        'haha': { icon: 'fa-laugh', label: 'u54c8u54c8' },
-        'wow': { icon: 'fa-surprise', label: 'u54c7' },
-        'sad': { icon: 'fa-sad-tear', label: 'u4f24u5fc3' }
+        'like': { icon: 'fa-thumbs-up', label: '赞' },
+        'love': { icon: 'fa-heart', label: '爱' },
+        'haha': { icon: 'fa-laugh', label: '哈哈' },
+        'wow': { icon: 'fa-surprise', label: '哇' },
+        'sad': { icon: 'fa-sad-tear', label: '伤心' }
     };
     
-    // u5b58u50a8u8868u60c5u53cdu5e94u7684u952eu540du524du7f00
+    // 存储表情反应的键名前缀
     const STORAGE_KEYS = {
         MESSAGE: 'message_reactions_',
         MOOD: 'mood_reactions_',
@@ -21,112 +21,56 @@ document.addEventListener('DOMContentLoaded', function() {
     };
     
     /**
-     * u521du59cbu5316u8868u60c5u53cdu5e94u529fu80fd
-     * @param {string} itemType - u9879u76eeu7c7bu578buff1a'message', 'mood', 'wish'
-     * @param {string} itemId - u9879u76eeID
-     * @param {HTMLElement} container - u653eu7f6eu8868u60c5u53cdu5e94u7684u5bb9u5668
+     * 初始化表情反应功能
+     * @param {string} itemType - 项目类型：'message', 'mood', 'wish'
+     * @param {string} itemId - 项目ID
+     * @param {HTMLElement} container - 放置表情反应的容器
      */
     function initReactions(itemType, itemId, container) {
-        // u521bu5efau8868u60c5u53cdu5e94u5bb9u5668
+        // 创建表情反应容器
         const reactionsContainer = document.createElement('div');
         reactionsContainer.className = 'reactions-container';
-        reactionsContainer.dataset.itemType = itemType;
-        reactionsContainer.dataset.itemId = itemId;
         
-        // u9996u5148u4eceu672cu5730u5b58u50a8u83b7u53d6u6570u636e
+        // 获取已有的表情反应数据
         const storageKey = getStorageKey(itemType, itemId);
         const reactions = getReactionsFromStorage(storageKey);
         
-        // u521bu5efau5404u79cdu8868u60c5u6309u94ae
-        createReactionButtons(reactionsContainer, reactions, storageKey, itemType, itemId);
-        
-        // u6dfbu52a0u5230u7236u5bb9u5668
-        container.appendChild(reactionsContainer);
-        
-        // u4eceFirebaseu52a0u8f7du6700u65b0u6570u636eu5e76u66f4u65b0UI
-        loadReactionsFromFirebase(itemType, itemId).then(firebaseReactions => {
-            if (firebaseReactions && Object.keys(firebaseReactions).length > 0) {
-                // u5982u679cu4eceFirebaseu83b7u53d6u5230u6570u636euff0cu66f4u65b0u5230u672cu5730u5b58u50a8
-                saveReactionsToStorage(storageKey, firebaseReactions);
-                
-                // u91cdu65b0u521bu5efau6309u94aeu4ee5u53cdu6620u6700u65b0u6570u636e
-                updateReactionButtons(reactionsContainer, firebaseReactions, storageKey);
-            }
-        }).catch(error => {
-            console.error('u4eceFirebaseu52a0u8f7du8868u60c5u53cdu5e94u5931u8d25:', error);
-        });
-        
-        // u8bbeu7f6eu5b9eu65f6u76d1u542c
-        setupRealtimeListener(itemType, itemId, reactionsContainer);
-    }
-    
-    /**
-     * u521bu5efau8868u60c5u53cdu5e94u6309u94ae
-     * @param {HTMLElement} container - u8868u60c5u53cdu5e94u5bb9u5668
-     * @param {Object} reactions - u8868u60c5u53cdu5e94u6570u636e
-     * @param {string} storageKey - u5b58u50a8u952eu540d
-     * @param {string} itemType - u9879u76eeu7c7bu578b
-     * @param {string} itemId - u9879u76eeID
-     */
-    function createReactionButtons(container, reactions, storageKey, itemType, itemId) {
-        // u6e05u7a7au5bb9u5668
-        container.innerHTML = '';
-        
-        // u521bu5efau5404u79cdu8868u60c5u6309u94ae
+        // 创建各种表情按钮
         Object.keys(reactionTypes).forEach(reactionType => {
-            const { icon } = reactionTypes[reactionType];
+            const { icon, label } = reactionTypes[reactionType];
+            const count = reactions[reactionType] || 0;
             
-            // u521bu5efau8868u60c5u6309u94ae
+            // 创建表情按钮
             const reactionButton = document.createElement('div');
             reactionButton.className = 'reaction-button';
             reactionButton.dataset.reaction = reactionType;
             reactionButton.dataset.itemId = itemId;
             reactionButton.dataset.itemType = itemType;
             
-            // u5982u679cu7528u6237u5df2u70b9u51fbu8fc7u6b64u8868u60c5uff0cu6dfbu52a0activeu7c7b
+            // 如果用户已点击过此表情，添加active类
             if (hasUserReacted(storageKey, reactionType)) {
                 reactionButton.classList.add('active');
             }
             
-            // u8bbeu7f6eu6309u94aeu5185u5bb9 - u53eau663eu793au56feu6807
+            // 设置按钮内容 - 只显示图标
             reactionButton.innerHTML = `
                 <i class="fas ${icon}"></i>
             `;
             
-            // u6dfbu52a0u70b9u51fbu4e8bu4ef6
+            // 添加点击事件
             reactionButton.addEventListener('click', handleReactionClick);
             
-            // u6dfbu52a0u5230u5bb9u5668
-            container.appendChild(reactionButton);
+            // 添加到容器
+            reactionsContainer.appendChild(reactionButton);
         });
-    }
-    
-    /**
-     * u66f4u65b0u8868u60c5u53cdu5e94u6309u94aeu72b6u6001
-     * @param {HTMLElement} container - u8868u60c5u53cdu5e94u5bb9u5668
-     * @param {Object} reactions - u8868u60c5u53cdu5e94u6570u636e
-     * @param {string} storageKey - u5b58u50a8u952eu540d
-     */
-    function updateReactionButtons(container, reactions, storageKey) {
-        // u83b7u53d6u6240u6709u8868u60c5u6309u94ae
-        const buttons = container.querySelectorAll('.reaction-button');
         
-        // u66f4u65b0u6bcfu4e2au6309u94aeu7684u72b6u6001
-        buttons.forEach(button => {
-            const reactionType = button.dataset.reaction;
-            
-            // u66f4u65b0u6fc0u6d3bu72b6u6001
-            if (hasUserReacted(storageKey, reactionType)) {
-                button.classList.add('active');
-            } else {
-                button.classList.remove('active');
-            }
-        });
+        // 添加到父容器
+        container.appendChild(reactionsContainer);
     }
     
     /**
-     * u5904u7406u8868u60c5u6309u94aeu70b9u51fbu4e8bu4ef6
-     * @param {Event} event - u70b9u51fbu4e8bu4ef6
+     * 处理表情按钮点击事件
+     * @param {Event} event - 点击事件
      */
     function handleReactionClick(event) {
         const button = event.currentTarget;
@@ -135,49 +79,45 @@ document.addEventListener('DOMContentLoaded', function() {
         const itemType = button.dataset.itemType;
         const storageKey = getStorageKey(itemType, itemId);
         
-        // u83b7u53d6u5f53u524du53cdu5e94u6570u636e
+        // 获取当前反应数据
         const reactions = getReactionsFromStorage(storageKey);
         
-        // u68c0u67e5u7528u6237u662fu5426u5df2u7ecfu70b9u51fbu8fc7u6b64u8868u60c5
+        // 检查用户是否已经点击过此表情
         const hasReacted = hasUserReacted(storageKey, reactionType);
         
-        // u66f4u65b0u53cdu5e94u6570u636e
+        // 更新反应数据
         if (hasReacted) {
-            // u5982u679cu5df2u70b9u51fbuff0cu5219u53d6u6d88
+            // 如果已点击，则取消
             reactions[reactionType] = Math.max(0, (reactions[reactionType] || 0) - 1);
             removeUserReaction(storageKey, reactionType);
             button.classList.remove('active');
         } else {
-            // u5982u679cu672au70b9u51fbuff0cu5219u6dfbu52a0
+            // 如果未点击，则添加
             reactions[reactionType] = (reactions[reactionType] || 0) + 1;
             addUserReaction(storageKey, reactionType);
             button.classList.add('active');
             
-            // u6dfbu52a0u70b9u51fbu52a8u753b
+            // 添加点击动画
             button.classList.add('just-clicked');
             setTimeout(() => {
                 button.classList.remove('just-clicked');
             }, 300);
         }
         
-        // u4fddu5b58u5230u5b58u50a8
+        // 不再更新显示数量，只有点击效果
+        
+        // 保存到存储
         saveReactionsToStorage(storageKey, reactions);
         
-        // u4fddu5b58u5230Firebaseuff0cu786eu4fddu8de8u8bbeu5907u540cu6b65
-        saveReactionsToFirebase(itemType, itemId, reactions)
-            .then(() => {
-                console.log(`u8868u60c5u53cdu5e94u5df2u540cu6b65u5230Firebase: ${itemType}/${itemId}`);
-            })
-            .catch(error => {
-                console.error('u540cu6b65u8868u60c5u53cdu5e94u5230Firebaseu5931u8d25:', error);
-            });
+        // 如果Firebase可用，保存到Firebase
+        saveReactionsToFirebase(itemType, itemId, reactions);
     }
     
     /**
-     * u83b7u53d6u5b58u50a8u952eu540d
-     * @param {string} itemType - u9879u76eeu7c7bu578b
-     * @param {string} itemId - u9879u76eeID
-     * @returns {string} u5b58u50a8u952eu540d
+     * 获取存储键名
+     * @param {string} itemType - 项目类型
+     * @param {string} itemId - 项目ID
+     * @returns {string} 存储键名
      */
     function getStorageKey(itemType, itemId) {
         const prefix = STORAGE_KEYS[itemType.toUpperCase()];
@@ -185,9 +125,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     /**
-     * u4eceu5b58u50a8u4e2du83b7u53d6u8868u60c5u53cdu5e94u6570u636e
-     * @param {string} storageKey - u5b58u50a8u952eu540d
-     * @returns {Object} u8868u60c5u53cdu5e94u6570u636e
+     * 从存储中获取表情反应数据
+     * @param {string} storageKey - 存储键名
+     * @returns {Object} 表情反应数据
      */
     function getReactionsFromStorage(storageKey) {
         const reactionsJson = localStorage.getItem(storageKey);
@@ -195,19 +135,19 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     /**
-     * u4fddu5b58u8868u60c5u53cdu5e94u6570u636eu5230u5b58u50a8
-     * @param {string} storageKey - u5b58u50a8u952eu540d
-     * @param {Object} reactions - u8868u60c5u53cdu5e94u6570u636e
+     * 保存表情反应数据到存储
+     * @param {string} storageKey - 存储键名
+     * @param {Object} reactions - 表情反应数据
      */
     function saveReactionsToStorage(storageKey, reactions) {
         localStorage.setItem(storageKey, JSON.stringify(reactions));
     }
     
     /**
-     * u68c0u67e5u7528u6237u662fu5426u5df2u70b9u51fbu8fc7u67d0u8868u60c5
-     * @param {string} storageKey - u5b58u50a8u952eu540d
-     * @param {string} reactionType - u8868u60c5u7c7bu578b
-     * @returns {boolean} u662fu5426u5df2u70b9u51fb
+     * 检查用户是否已点击过某表情
+     * @param {string} storageKey - 存储键名
+     * @param {string} reactionType - 表情类型
+     * @returns {boolean} 是否已点击
      */
     function hasUserReacted(storageKey, reactionType) {
         const userReactionsKey = 'user_' + storageKey;
@@ -219,9 +159,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     /**
-     * u6dfbu52a0u7528u6237u8868u60c5u53cdu5e94u8bb0u5f55
-     * @param {string} storageKey - u5b58u50a8u952eu540d
-     * @param {string} reactionType - u8868u60c5u7c7bu578b
+     * 添加用户表情反应记录
+     * @param {string} storageKey - 存储键名
+     * @param {string} reactionType - 表情类型
      */
     function addUserReaction(storageKey, reactionType) {
         const userReactionsKey = 'user_' + storageKey;
@@ -240,9 +180,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     /**
-     * u79fbu9664u7528u6237u8868u60c5u53cdu5e94u8bb0u5f55
-     * @param {string} storageKey - u5b58u50a8u952eu540d
-     * @param {string} reactionType - u8868u60c5u7c7bu578b
+     * 移除用户表情反应记录
+     * @param {string} storageKey - 存储键名
+     * @param {string} reactionType - 表情类型
      */
     function removeUserReaction(storageKey, reactionType) {
         const userReactionsKey = 'user_' + storageKey;
@@ -252,134 +192,66 @@ document.addEventListener('DOMContentLoaded', function() {
         
         let reactionsArray = JSON.parse(userReactions);
         reactionsArray = reactionsArray.filter(type => type !== reactionType);
-        try {
-            console.log(`u6211u662fu70b9u51fbu8868u60c5u53cdu5e94u5230Firebase: ${itemType}/${itemId}`, reactions);
-            
-            if (typeof firebase === 'undefined') {
-                console.error('Firebase SDKu672au521du59cbu5316\uff0cu65e0u6cd5u4fddu5b58u8868u60c5u53cdu5e94');
-                reject(new Error('Firebase SDKu672au521du59cbu5316'));
-                return;
-            }
-            
-            if (firebase.apps.length === 0) {
-                console.error('Firebaseu672au521du59cbu5316\uff0cu65e0u6cd5u4fddu5b58u8868u60c5u53cdu5e94');
-                reject(new Error('Firebaseu672au521du59cbu5316'));
-                return;
-            }
-            
-            const db = firebase.database();
-            const path = `reactions/${itemType}/${itemId}`;
-            
-            console.log(`u6b63u5728u4e2du8f7du8868u60c5u53cdu5e94u5230Firebaseu8defu5f84: ${path}`);
-            
-            db.ref(path).set(reactions)
-                .then(() => {
-                    console.log(`\u2705 u8868u60c5u53cdu5e94\u5df2\u6210\u529fu4fdd\u5b58\u5230Firebase: ${path}`);
-                    resolve();
-                })
-                .catch(error => {
-                    console.error(`\u274c u4fdd\u5b58u8868u60c5u53cdu5e94\u5230Firebase\u5931\u8d25: ${path}`, error);
-                    reject(error);
-                });
-        } catch (error) {
-            console.error('Firebase\u64cdu4f5cu5931\u8d25:', error);
-            reject(error);
-        }
-    });
-}
-
-/**
- * u4eceFirebaseu52a0u8f7du8868u60c5u53cdu5e94
- * @param {string} itemType - u9879u76eeu7c7bu578b
- * @param {string} itemId - u9879u76eeID
- * @returns {Promise<Object>} u8868u60c5u53cdu5e94u6570u636e
- */
-function loadReactionsFromFirebase(itemType, itemId) {
-    return new Promise((resolve, reject) => {
-        try {
-            console.log(`u6211u662fu70b9u51fbu4eceFirebaseu52a0u8f7du8868u60c5u53cdu5e94: ${itemType}/${itemId}`);
-            
-            if (typeof firebase === 'undefined') {
-                console.error('Firebase SDKu672au521du59cbu5316\uff0cu65e0u6cd5u52a0u8f7du8868u60c5u53cdu5e94');
-                resolve({});
-                return;
-            }
-            
-            if (firebase.apps.length === 0) {
-                console.error('Firebaseu672au521du59cbu5316\uff0cu65e0u6cd5u52a0u8f7du8868u60c5u53cdu5e94');
-                resolve({});
-                return;
-            }
-            
-            const db = firebase.database();
-            const path = `reactions/${itemType}/${itemId}`;
-            
-            console.log(`u6b63u5728u4e2du8f7du8868u60c5u53cdu5e94u4e8cu4f53Firebaseu8defu5f84: ${path}`);
-            
-            db.ref(path).once('value')
-                .then(snapshot => {
-                    const reactions = snapshot.val() || {};
-                    console.log(`\u2705 \u4eceFirebase\u6210\u529fu52a0u8f7du8868u60c5u53cdu5e94: ${path}`, reactions);
-                    resolve(reactions);
-                })
-                .catch(error => {
-                    console.error(`\u274c \u4eceFirebase\u52a0u8f7du8868u60c5u53cdu5e94\u5931\u8d25: ${path}`, error);
-                    reject(error);
-                });
-        } catch (error) {
-            console.error('Firebase\u64cdu4f5cu5931\u8d25:', error);
-            resolve({});
-        }
-    });
-}
-
-/**
- * u8bbeu7f6eu5b9eu65f6u6570u636eu76d1u542c
- * @param {string} itemType - u9879u76eeu7c7bu578b
- * @param {string} itemId - u9879u76eeID
- * @param {HTMLElement} container - u8868u60c5u53cdu5e94u5bb9u5668
- */
-function setupRealtimeListener(itemType, itemId, container) {
-    try {
-        console.log(`u6211u662fu70b9u51fbu8bbeu7f6eu5b9eu65f6u76d1u542c: ${itemType}/${itemId}`);
         
-        if (typeof firebase === 'undefined') {
-            console.error('Firebase SDKu672au521du59cbu5316\uff0cu65e0u6cd5u8bbeu7f6eu5b9eu65f6u76d1u542c');
-            return;
-        }
-        
-        if (firebase.apps.length === 0) {
-            console.error('Firebaseu672au521du59cbu5316\uff0cu65e0u6cd5u8bbeu7f6eu5b9eu65f6u76d1u542c');
-            return;
-        }
-        
-        const db = firebase.database();
-        const path = `reactions/${itemType}/${itemId}`;
-        
-        console.log(`u6b63u5728u8bbeu7f6eu5b9eu65f6u76d1u542cFirebaseu8defu5f84: ${path}`);
-        
-        // u76d1u542cu6570u636eu53d8u5316
-        db.ref(path).on('value', snapshot => {
-            console.log(`u68c0u67e5u5230Firebaseu6570u636eu53d8u5316: ${path}`);
-            const firebaseReactions = snapshot.val() || {};
-            const storageKey = getStorageKey(itemType, itemId);
-            
-            // u66f4u65b0u672cu5730u5b58u50a8
-            saveReactionsToStorage(storageKey, firebaseReactions);
-            
-            // u66f4u65b0UI
-            updateReactionButtons(container, firebaseReactions, storageKey);
-            console.log(`\u2705 \u5df2\u66f4u65b0u8868u60c5u53cdu5e94UI: ${itemType}/${itemId}`);
-        }, error => {
-            console.error(`u76d1u542cFirebaseu6570u636eu53d8u5316\u5931\u8d25: ${path}`, error);
-        });
-        
-        console.log(`\u2705 \u5b9eu65f6u76d1u542cu8bbeu7f6eu6210\u529f: ${path}`);
-    } catch (error) {
-        console.error('u8bbeu7f6eu5b9eu65f6u76d1u542cu5931\u8d25:', error);
+        localStorage.setItem(userReactionsKey, JSON.stringify(reactionsArray));
     }
-}
-        loadReactionsFromFirebase,
-        updateReactionButtons
+    
+    /**
+     * 保存表情反应到Firebase
+     * @param {string} itemType - 项目类型
+     * @param {string} itemId - 项目ID
+     * @param {Object} reactions - 表情反应数据
+     */
+    function saveReactionsToFirebase(itemType, itemId, reactions) {
+        try {
+            if (typeof firebase !== 'undefined' && firebase.apps.length > 0) {
+                const db = firebase.database();
+                const path = `reactions/${itemType}/${itemId}`;
+                
+                db.ref(path).set(reactions)
+                    .then(() => console.log(`表情反应已保存到 Firebase: ${path}`))
+                    .catch(error => console.error('保存表情反应到 Firebase 失败:', error));
+            }
+        } catch (error) {
+            console.error('Firebase 操作失败:', error);
+        }
+    }
+    
+    /**
+     * 从Firebase加载表情反应
+     * @param {string} itemType - 项目类型
+     * @param {string} itemId - 项目ID
+     * @returns {Promise<Object>} 表情反应数据
+     */
+    function loadReactionsFromFirebase(itemType, itemId) {
+        return new Promise((resolve, reject) => {
+            try {
+                if (typeof firebase !== 'undefined' && firebase.apps.length > 0) {
+                    const db = firebase.database();
+                    const path = `reactions/${itemType}/${itemId}`;
+                    
+                    db.ref(path).once('value')
+                        .then(snapshot => {
+                            const reactions = snapshot.val() || {};
+                            resolve(reactions);
+                        })
+                        .catch(error => {
+                            console.error('从 Firebase 加载表情反应失败:', error);
+                            reject(error);
+                        });
+                } else {
+                    resolve({});
+                }
+            } catch (error) {
+                console.error('Firebase 操作失败:', error);
+                resolve({});
+            }
+        });
+    }
+    
+    // 导出公共API
+    window.ReactionsModule = {
+        initReactions,
+        loadReactionsFromFirebase
     };
 });

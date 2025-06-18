@@ -1,0 +1,10 @@
+/* lovecat canvas样式 */
+.feature-tabs #lovecatCanvas {
+    transform: scale(0.25);
+    transform-origin: top right;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 1;
+    pointer-events: none; /* 确保不会干扰功能标签的点击 */
+}

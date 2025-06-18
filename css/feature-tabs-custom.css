@@ -1,0 +1,91 @@
+/* 功能标签自定义布局 */
+.feature-tabs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 15px 0;
+    margin-bottom: 20px;
+}
+
+/* 功能标签容器 */
+.feature-tabs-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* 单个功能标签样式 */
+.feature-tab {
+    padding: 12px 25px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 2;
+}
+
+.feature-tab:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.feature-tab.active {
+    background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+    color: white;
+    box-shadow: 0 4px 10px rgba(108, 92, 231, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* 确保lovecat canvas位置正确 */
+.feature-tabs #lovecatCanvas {
+    position: absolute;
+    right: 0;
+    top: 45px; /* 将位置适当上移一点 */
+    z-index: 1;
+    transform: scale(0.2);
+    transform-origin: top right;
+    pointer-events: none;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .feature-tabs-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .feature-tab {
+        width: 80%;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    
+    .feature-tabs #lovecatCanvas {
+        position: relative;
+        right: auto;
+        top: auto;
+        transform: scale(0.25);
+        transform-origin: center center;
+        display: block;
+        margin: 20px auto 0;
+    }
+    
+    .feature-tabs {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
